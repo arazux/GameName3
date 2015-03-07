@@ -16,6 +16,8 @@ namespace GameName3
         private float walkDelay;
         private bool isMoving;
         private bool moveUp, moveDown, moveLeft, moveRight;
+        public int cameraX;
+        public int cameraY;
 
         public Player(int x, int y, int t, Texture2D tex)
         {

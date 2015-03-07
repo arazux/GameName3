@@ -76,15 +76,14 @@ namespace GameName3
             {
                 for (int col = 0; col < map[0].Length; col++)
                 { 
-                    int tempx = 0;
-                    int tempy = 0;
-                    tempx = (p.x * 64) - 640;
-                    if (tempx <= 640)
-                        tempx = 0;
-                    if (tempy <= 320)
-                        tempy = 0;
-                    tempy = (p.y * 64) - 320;
-                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - tempx, (map[row][col].y * 64) - tempy));
+                    p.cameraX = (p.x * 64) - 640;
+                    p.cameraY = (p.y * 64) - 320;
+                    if (p.cameraX <= 640)
+                        p.cameraX = 0;
+                    if (p.cameraY <= 320)
+                        p.cameraY = 0;
+
+                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
                   }
             }
         }
