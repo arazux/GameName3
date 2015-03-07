@@ -8,17 +8,22 @@ using Microsoft.Xna.Framework;
 
 namespace GameName3
 {
+    enum TileTitle { Grass, Water, Fire, Wall }
     public class GameMap
     {
         public Tile[][] map;
         public static int tileWidth = 64;
         public static int tileHeight = 64;
         public Texture2D[] tileSprites;
+        public int xTiles;
+        public int yTiles;
 
 
 
         public GameMap(int x, int y, Texture2D[] tileSprites)
         {
+            xTiles = x;
+            yTiles = y;
             map = new Tile[x][];
             this.tileSprites = tileSprites;
             int row = 0;
@@ -32,30 +37,30 @@ namespace GameName3
                     {
                         map[row] = new Tile[y];
                     }
-                    map[row][col] = new Tile(1, row, col);
+                    map[row][col] = new Tile(0, row, col);
                     col++;
                     index++;
                 }
                 row++;
             }
 
-            map[1][1].setType(4);
-            map[1][2].setType(4);
-            map[1][3].setType(4);
-            map[1][4].setType(4);
-            map[1][5].setType(4);
-            map[1][6].setType(4);
+            map[1][1].setType(3);
+            map[1][2].setType(3);
+            map[1][3].setType(3);
+            map[1][4].setType(3);
+            map[1][5].setType(3);
+            map[1][6].setType(3);
 
-            map[2][2].setType(3);
+            map[2][2].setType(2);
 
-            map[2][1].setType(4);
+            map[2][1].setType(3);
 
-            map[3][1].setType(4);
-            map[3][2].setType(4);
-            map[3][3].setType(4);
-            map[3][4].setType(4);
-            map[3][5].setType(4);
-            map[3][6].setType(4);
+            map[3][1].setType(3);
+            map[3][2].setType(3);
+            map[3][3].setType(3);
+            map[3][4].setType(3);
+            map[3][5].setType(3);
+            map[3][6].setType(3);
 
 
 
@@ -65,27 +70,12 @@ namespace GameName3
 
 
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
             for (int row = 0; row < map.Length; row++)
             {
                 for (int col = 0; col < map[0].Length; col++)
-                    switch (map[row][col].getType())
-                    {
-                        case 1:
-                            sb.Draw(tileSprites[0], new Vector2(map[row][col].x * 64, map[row][col].y * 64));
-                            break;
-                        case 2:
-                            sb.Draw(tileSprites[1], new Vector2(map[row][col].x * 64, map[row][col].y * 64));
-                            break;
-                        case 3:
-                            sb.Draw(tileSprites[2], new Vector2(map[row][col].x * 64, map[row][col].y * 64));
-                            break;
-                        case 4:
-                            sb.Draw(tileSprites[3], new Vector2(map[row][col].x * 64, map[row][col].y * 64));
-                            break;
-                    }
-
+                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2(map[row][col].x * 64, map[row][col].y * 64));
             }
         }
 

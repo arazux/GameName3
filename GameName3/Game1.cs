@@ -76,7 +76,7 @@ namespace GameName3
             // TODO: Add your initialization logic here
             test = new Texture2D[] { grass, water, fire, wall, cat, troll };
 
-            gameMap = new GameMap(20, 10, test);
+            gameMap = new GameMap(100, 50, test);
 
 
             player = new Player(4, 6, 6, cat);
@@ -118,10 +118,16 @@ namespace GameName3
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            player.Update(gameMap);
+            player.Update(gameMap, gameTime);
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.O))
+                player.incMoveDelay();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.P))
+                player.decMoveDelay();
 
             // TODO: Add your update logic here
             base.Update(gameTime);
@@ -136,10 +142,8 @@ namespace GameName3
 
             spriteBatch.Begin();
 
-            gameMap.draw(spriteBatch);
-
-
-            spriteBatch.Draw(player.test, new Vector2(player.x * 64, player.y * 64));
+            gameMap.Draw(spriteBatch);
+            player.Draw(spriteBatch);
 
 
             if (gameMap.map[player.x][player.y].getType() == 3)
@@ -152,7 +156,7 @@ namespace GameName3
 
             foreach(NPC n in npcs)
             {
-                spriteBatch.Draw(n.test, new Vector2(n.x * 64, n.y * 64));
+                spriteBatch.Draw(n.tex, new Vector2(n.x * 64, n.y * 64));
             }
 
 

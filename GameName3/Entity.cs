@@ -13,7 +13,7 @@ namespace GameName3
         public int x;
         public int y;
         public int spriteType;
-        public Texture2D test;
+        public Texture2D tex;
 
         public Entity(int x, int y, int t)
         {
