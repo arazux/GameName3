@@ -46,6 +46,24 @@
       <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\dragon.xnb</Output>
       <Time>2015-03-07T06:11:36.9612778+01:00</Time>
     </Item>
+    <Item>
+      <Source>Test.spritefont</Source>
+      <Name>Test</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\Test.xnb</Output>
+      <Time>2015-03-07T17:46:45.7294541+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TileSprites\katt1.png</Source>
+      <Name>TileSprites\katt1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\katt1.xnb</Output>
+      <Time>2015-03-07T19:05:09.7420757+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{1F8DE70B-FEEA-41A0-B2DF-EE44A6652A20}</ContentProjectGUID>

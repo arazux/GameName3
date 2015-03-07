@@ -32,12 +32,19 @@ namespace GameName3
                     {
                         map[row] = new Tile[y];
                     }
-                    map[row][col] = new Tile(4, row, col);
+                    map[row][col] = new Tile(1, row, col);
                     col++;
                     index++;
                 }
                 row++;
             }
+
+            map[1][1].setType(4);
+            map[1][2].setType(4);
+            map[1][3].setType(4);
+            map[1][4].setType(4);
+            map[1][5].setType(4);
+
 
              
 
@@ -70,50 +77,4 @@ namespace GameName3
         }
 
     }
-}
-
-public class Tile
-{
-    public int x;
-    public int y;
-    int type;
-    public bool walkable;
-
-    public Tile()
-    {
-        type = 1;
-    }
-
-    public Tile(int t)
-    {
-
-            walkable = true;
-
-        type = t;
-    }
-
-    public Tile(int t, int x, int y)
-    {
-        type = t;
-        this.x = x;
-        this.y = y;
-
-        if (t == 4)
-            walkable = false;
-        else
-            walkable = true;
-
-  
-    }
-
-    public int getType()
-    {
-        return type;
-    }
-
-    public void setType(int t)
-    {
-        type = t;
-    }
-
 }

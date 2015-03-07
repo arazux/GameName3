@@ -21,7 +21,7 @@ namespace GameName3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Entity player;
+        public Player player;
 
         public GameMap gameMap;
 
@@ -30,9 +30,11 @@ namespace GameName3
         private Texture2D water;
         private Texture2D wall;
         private Texture2D dragon;
+        private Texture2D cat;
 
         private Texture2D[] test;
 
+        private SpriteFont font;
 
 
         public Game1()
@@ -60,14 +62,18 @@ namespace GameName3
             fire = Content.Load<Texture2D>("TileSprites/fire");
             wall = Content.Load<Texture2D>("TileSprites/wall"); // THIS STUFF SHOULD BE IN LOAD CONTENT ^^
             dragon = Content.Load<Texture2D>("TileSprites/dragon");
+            cat = Content.Load<Texture2D>("TileSprites/katt1");
+
+            font = Content.Load<SpriteFont>("Test");
 
 
             // TODO: Add your initialization logic here
-            test = new Texture2D[] { grass, water, fire, wall };
+            test = new Texture2D[] { grass, water, fire, wall, cat };
 
             gameMap = new GameMap(20, 10, test);
 
-            player = new Entity(4, 6, 2);
+
+            player = new Player(4, 6, 6);
 
 
             base.Initialize();
@@ -129,8 +135,19 @@ namespace GameName3
                 case 2:
                     spriteBatch.Draw(dragon, new Vector2(player.x * 64, player.y * 64));
                     break;
+                case 6:
+                    spriteBatch.Draw(cat, new Vector2(player.x * 64, player.y * 64));
+                    break;
             
             }
+
+
+            spriteBatch.DrawString(font, " X : " + player.x.ToString(), new Vector2(10, 10), Color.Black);
+            spriteBatch.DrawString(font, " Y : " + player.y.ToString(), new Vector2(120, 10), Color.Black);
+
+            spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.x][player.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
+            spriteBatch.DrawString(font, gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
+
 
             spriteBatch.End();
 
