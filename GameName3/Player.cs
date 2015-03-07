@@ -39,8 +39,10 @@ namespace GameName3
 
         public void levelUp()
         {
+            level++;
             health += 5;
             damage += 2;
+            walkDelay--;
         }
 
         public void Move(GameMap m)
