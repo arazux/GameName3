@@ -42,7 +42,7 @@ namespace GameName3
             level++;
             health += 5;
             damage += 2;
-            walkDelay--;
+            decMoveDelay();
         }
 
         public void Move(GameMap m)
