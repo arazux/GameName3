@@ -90,8 +90,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TileSprites\katt1.png">
-      <Name>katt1</Name>
+    <Compile Include="TileSprites\katt.png">
+      <Name>katt</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

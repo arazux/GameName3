@@ -62,7 +62,7 @@ namespace GameName3
             fire = Content.Load<Texture2D>("TileSprites/fire");
             wall = Content.Load<Texture2D>("TileSprites/wall"); // THIS STUFF SHOULD BE IN LOAD CONTENT ^^
             dragon = Content.Load<Texture2D>("TileSprites/dragon");
-            cat = Content.Load<Texture2D>("TileSprites/katt1");
+            cat = Content.Load<Texture2D>("TileSprites/katt");
 
             font = Content.Load<SpriteFont>("Test");
 
