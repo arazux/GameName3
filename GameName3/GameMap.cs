@@ -78,12 +78,20 @@ namespace GameName3
                 { 
                     p.cameraX = (p.x * 64) - 640;
                     p.cameraY = (p.y * 64) - 320;
-                    if (p.cameraX <= 640)
+                    if (p.cameraX < 0)
                         p.cameraX = 0;
-                    if (p.cameraY <= 320)
+
+                    if (p.cameraX > 5120)
+                        p.cameraX = 5120;
+
+                    if (p.cameraY < 0)
                         p.cameraY = 0;
 
+                    if (p.cameraY > 2560)
+                        p.cameraY = 2560;
+
                     sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
+
                   }
             }
         }

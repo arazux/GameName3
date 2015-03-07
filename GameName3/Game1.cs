@@ -145,15 +145,6 @@ namespace GameName3
             gameMap.Draw(spriteBatch, player);
             player.Draw(spriteBatch);
 
-
-            if (gameMap.map[player.x][player.y].getType() == 3)
-            {
-                npcs[1].x = 5;
-                gameMap.map[2][3].setType(4);
-            }
-            else
-                npcs[1].x = 20;
-
             foreach(NPC n in npcs)
             {
                 spriteBatch.Draw(n.tex, new Vector2(n.x * 64 - player.cameraX, n.y * 64 - player.cameraY));
