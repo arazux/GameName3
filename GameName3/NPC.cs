@@ -9,6 +9,7 @@ namespace GameName3
 {
     public class NPC : Entity
     {
+        public int health;
         public NPC(int x, int y, int t, Texture2D tex )
         {
             this.x = x;

@@ -67,3 +67,4 @@ C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\SharpD
 C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\obj\x86\Debug\GameName3.csprojResolveAssemblyReference.cache
 C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\data\map1.txt
+C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\background.xnb

@@ -38,6 +38,7 @@ namespace GameName3
         private Texture2D dragon;
         private Texture2D cat;
         private Texture2D troll;
+        private Texture2D background;
 
         private Texture2D[] test;
 
@@ -73,13 +74,14 @@ namespace GameName3
             dragon = Content.Load<Texture2D>("TileSprites/dragon");
             cat = Content.Load<Texture2D>("TileSprites/katt");
             troll = Content.Load<Texture2D>("TileSprites/troll");
+            background = Content.Load<Texture2D>("TileSprites/background");
 
             font = Content.Load<SpriteFont>("Test");
 
 
 
             // TODO: Add your initialization logic here
-            test = new Texture2D[] { grass, water, fire, wall, cat, troll };
+            test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
             gameMap = new GameMap(100, 50, test);
 
@@ -88,6 +90,7 @@ namespace GameName3
             enemy1 = new NPC(7, 7, 0, dragon);
             enemy2 = new NPC(9, 9, 0, troll);
             npcs = new NPC[] { enemy1, enemy2 };
+            npcs[1].health = 10;
              
 
 
@@ -155,8 +158,23 @@ namespace GameName3
                 spriteBatch.Draw(n.tex, new Vector2(n.x * 64 - player.cameraX, n.y * 64 - player.cameraY));
             }
 
+            /* 
+            for (int index = 0; index < 10; index++ )
+                spriteBatch.Draw(background, new Vector2(index*64, 640-64)); Rita ut fula gråa rutor för UI start
+            */
+
             if (gameMap.map[player.x][player.y].getType() == 2)
                 player.levelUp();
+
+            if (player.x == npcs[1].x && player.y == npcs[1].y)
+            {
+                player.target = npcs[1];
+                player.attack();
+                if( npcs[1].health < 1 )
+                {
+                    npcs[1].x = 200;
+                }
+            }
 
 
             spriteBatch.DrawString(font, " X : " + player.x.ToString(), new Vector2(10, 10), Color.Black);
@@ -169,6 +187,8 @@ namespace GameName3
             spriteBatch.DrawString(font, " Level : " + player.level.ToString(), new Vector2(1100, 10), Color.Black);
             spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1100, 40), Color.Black);
             spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1100, 70), Color.Black);
+
+            spriteBatch.DrawString(font, " Troll Health : " + npcs[1].health.ToString(), new Vector2(450, 40), Color.Black);
 
 
             spriteBatch.End();

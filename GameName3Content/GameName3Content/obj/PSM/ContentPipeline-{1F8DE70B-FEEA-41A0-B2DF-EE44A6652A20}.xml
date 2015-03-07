@@ -73,6 +73,15 @@
       <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\troll.xnb</Output>
       <Time>2015-03-07T19:30:58.2894352+01:00</Time>
     </Item>
+    <Item>
+      <Source>TileSprites\background.png</Source>
+      <Name>TileSprites\background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\background.xnb</Output>
+      <Time>2015-03-08T00:31:08.3612374+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{1F8DE70B-FEEA-41A0-B2DF-EE44A6652A20}</ContentProjectGUID>

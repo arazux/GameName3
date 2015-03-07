@@ -21,6 +21,9 @@ namespace GameName3
         public int level;
         public int health;
         public int damage;
+        public NPC target;
+        public bool canAttack;
+        public float attackTimer;
 
         public Player(int x, int y, int t, Texture2D tex)
         {
@@ -35,6 +38,18 @@ namespace GameName3
             level = 0;
             health = 1;
             damage = 1;
+            target = null;
+            canAttack = true;
+        }
+
+        public void attack()
+        {
+            if( target != null && canAttack )
+            {
+                target.health--;
+                canAttack = false;
+                attackTimer = 1000;
+            }
         }
 
         public void levelUp()
@@ -180,6 +195,13 @@ namespace GameName3
                 moveLeft = false;
                 moveRight = false;
             }
+
+            attackTimer -= gameTime.ElapsedGameTime.Milliseconds;
+            if( attackTimer < 0 )
+            {
+                canAttack = true;
+            }
+
 
         }
 
