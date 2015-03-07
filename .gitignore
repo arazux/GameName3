@@ -163,3 +163,6 @@ UpgradeLog*.XML
 GameName3/bin/Windows/Debug/GameName3.exe
 *.exe
 GameName3/obj/x86/Debug/GameName3.pdb
+*.suo
+GameName3/Player.cs
+GameName3.v12.suo
