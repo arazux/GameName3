@@ -9,8 +9,10 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
+
 namespace GameName3
 {
+ 
 
 
     /// <summary>
@@ -40,6 +42,8 @@ namespace GameName3
         private Texture2D[] test;
 
         private SpriteFont font;
+
+
 
 
         public Game1()
@@ -146,19 +150,13 @@ namespace GameName3
             gameMap.Draw(spriteBatch, player);
             player.Draw(spriteBatch);
 
-
-            if (gameMap.map[player.x][player.y].getType() == 3)
-            {
-                npcs[1].x = 5;
-                gameMap.map[2][3].setType(4);
-            }
-            else
-                npcs[1].x = 20;
-
             foreach(NPC n in npcs)
             {
                 spriteBatch.Draw(n.tex, new Vector2(n.x * 64 - player.cameraX, n.y * 64 - player.cameraY));
             }
+
+            if (gameMap.map[player.x][player.y].getType() == 2)
+                player.levelUp();
 
 
             spriteBatch.DrawString(font, " X : " + player.x.ToString(), new Vector2(10, 10), Color.Black);
@@ -166,6 +164,11 @@ namespace GameName3
 
             spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.x][player.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
             spriteBatch.DrawString(font, " TileTypeID : " + gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
+            spriteBatch.DrawString(font, " walkDelay : " + player.getWalkDelay(), new Vector2(10, 100), Color.Black);
+
+            spriteBatch.DrawString(font, " Level : " + player.level.ToString(), new Vector2(1100, 10), Color.Black);
+            spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1100, 40), Color.Black);
+            spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1100, 70), Color.Black);
 
 
             spriteBatch.End();
