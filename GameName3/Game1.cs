@@ -108,6 +108,7 @@ namespace GameName3
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            
         }
 
         /// <summary>
@@ -132,7 +133,6 @@ namespace GameName3
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
 
@@ -140,6 +140,15 @@ namespace GameName3
 
 
             spriteBatch.Draw(player.test, new Vector2(player.x * 64, player.y * 64));
+
+
+            if (gameMap.map[player.x][player.y].getType() == 3)
+            {
+                npcs[1].x = 5;
+                gameMap.map[2][3].setType(4);
+            }
+            else
+                npcs[1].x = 20;
 
             foreach(NPC n in npcs)
             {
@@ -151,7 +160,7 @@ namespace GameName3
             spriteBatch.DrawString(font, " Y : " + player.y.ToString(), new Vector2(120, 10), Color.Black);
 
             spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.x][player.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
-            spriteBatch.DrawString(font, gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
+            spriteBatch.DrawString(font, " TileTypeID : " + gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
 
 
             spriteBatch.End();

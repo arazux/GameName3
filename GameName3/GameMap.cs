@@ -44,6 +44,19 @@ namespace GameName3
             map[1][3].setType(4);
             map[1][4].setType(4);
             map[1][5].setType(4);
+            map[1][6].setType(4);
+
+            map[2][2].setType(3);
+
+            map[2][1].setType(4);
+
+            map[3][1].setType(4);
+            map[3][2].setType(4);
+            map[3][3].setType(4);
+            map[3][4].setType(4);
+            map[3][5].setType(4);
+            map[3][6].setType(4);
+
 
 
              
