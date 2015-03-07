@@ -77,6 +77,7 @@ namespace GameName3
             font = Content.Load<SpriteFont>("Test");
 
 
+
             // TODO: Add your initialization logic here
             test = new Texture2D[] { grass, water, fire, wall, cat, troll };
 
