@@ -37,6 +37,15 @@
       <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\wall.xnb</Output>
       <Time>2015-03-07T03:41:29.9954453+01:00</Time>
     </Item>
+    <Item>
+      <Source>TileSprites\dragon.png</Source>
+      <Name>TileSprites\dragon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\dragon.xnb</Output>
+      <Time>2015-03-07T06:11:36.9612778+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{1F8DE70B-FEEA-41A0-B2DF-EE44A6652A20}</ContentProjectGUID>

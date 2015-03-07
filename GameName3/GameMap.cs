@@ -32,12 +32,13 @@ namespace GameName3
                     {
                         map[row] = new Tile[y];
                     }
-                    map[row][col] = new Tile(1, row, col);
+                    map[row][col] = new Tile(4, row, col);
                     col++;
                     index++;
                 }
                 row++;
             }
+
              
 
         }

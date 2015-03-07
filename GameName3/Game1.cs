@@ -22,7 +22,6 @@ namespace GameName3
         SpriteBatch spriteBatch;
 
         public Entity player;
-        public Entity player2;
 
         public GameMap gameMap;
 
@@ -30,6 +29,7 @@ namespace GameName3
         private Texture2D grass;
         private Texture2D water;
         private Texture2D wall;
+        private Texture2D dragon;
 
         private Texture2D[] test;
 
@@ -59,6 +59,7 @@ namespace GameName3
             water = Content.Load<Texture2D>("TileSprites/water");
             fire = Content.Load<Texture2D>("TileSprites/fire");
             wall = Content.Load<Texture2D>("TileSprites/wall"); // THIS STUFF SHOULD BE IN LOAD CONTENT ^^
+            dragon = Content.Load<Texture2D>("TileSprites/dragon");
 
 
             // TODO: Add your initialization logic here
@@ -67,7 +68,6 @@ namespace GameName3
             gameMap = new GameMap(20, 10, test);
 
             player = new Entity(4, 6, 2);
-            player2 = new Entity(7, 9, 3);
 
 
             base.Initialize();
@@ -103,36 +103,10 @@ namespace GameName3
         {
             player.Update(gameMap);
 
-            /*
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Up))
-                player.Move(Keys.Up);
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Down))
-                player.y++;
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Right))
-                player.x++;
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Left))
-                player.x--;
-
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.W))
-                player2.y--;
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.S))
-                player2.y++;
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D))
-                player2.x++;
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.A))
-                player2.x--;
             // TODO: Add your update logic here
-            */
             base.Update(gameTime);
         }
 
@@ -153,23 +127,10 @@ namespace GameName3
                 case 1:
                     break;
                 case 2:
-                    spriteBatch.Draw(water, new Vector2(player.x * 64, player.y * 64));
+                    spriteBatch.Draw(dragon, new Vector2(player.x * 64, player.y * 64));
                     break;
             
             }
-
-            switch (player2.spriteType)
-            {
-                case 1:
-                    break;
-                case 2:
-                    spriteBatch.Draw(water, new Vector2(player2.x * 64, player2.y * 64));
-                    break;
-                case 3:
-                    spriteBatch.Draw(fire, new Vector2(player2.x * 64, player2.y * 64));
-                    break;
-
-            }  
 
             spriteBatch.End();
 

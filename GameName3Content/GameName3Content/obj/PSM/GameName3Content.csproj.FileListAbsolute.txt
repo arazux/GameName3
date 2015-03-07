@@ -6,3 +6,4 @@ C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\P
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\water.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\fire.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\wall.xnb
+C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\dragon.xnb

@@ -28,3 +28,4 @@ C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\Til
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\water.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\fire.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\wall.xnb
+C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\dragon.xnb
