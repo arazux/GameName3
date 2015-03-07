@@ -79,7 +79,7 @@ namespace GameName3
             gameMap = new GameMap(100, 50, test);
 
 
-            player = new Player(4, 6, 6, cat);
+            player = new Player(17, 15, 6, cat);
             enemy1 = new NPC(7, 7, 0, dragon);
             enemy2 = new NPC(9, 9, 0, troll);
             npcs = new NPC[] { enemy1, enemy2 };
@@ -142,7 +142,7 @@ namespace GameName3
 
             spriteBatch.Begin();
 
-            gameMap.Draw(spriteBatch);
+            gameMap.Draw(spriteBatch, player);
             player.Draw(spriteBatch);
 
 

@@ -70,12 +70,22 @@ namespace GameName3
 
 
 
-        public void Draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb, Player p)
         {
             for (int row = 0; row < map.Length; row++)
             {
                 for (int col = 0; col < map[0].Length; col++)
-                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2(map[row][col].x * 64, map[row][col].y * 64));
+                { 
+                    int tempx = 0;
+                    int tempy = 0;
+                    tempx = (p.x * 64) - 640;
+                    if (tempx <= 640)
+                        tempx = 0;
+                    if (tempy <= 320)
+                        tempy = 0;
+                    tempy = (p.y * 64) - 320;
+                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - tempx, (map[row][col].y * 64) - tempy));
+                  }
             }
         }
 
