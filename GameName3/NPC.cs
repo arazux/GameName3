@@ -9,12 +9,12 @@ namespace GameName3
 {
     public class NPC : Entity
     {
-        public NPC(int x, int y, int t, Texture2D test )
+        public NPC(int x, int y, int t, Texture2D tex )
         {
             this.x = x;
             this.y = y;
             this.spriteType = t;
-            this.test = test;
+            this.tex = tex;
         }
     }
 }

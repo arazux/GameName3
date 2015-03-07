@@ -65,7 +65,7 @@ namespace GameName3
 
 
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
             for (int row = 0; row < map.Length; row++)
             {
