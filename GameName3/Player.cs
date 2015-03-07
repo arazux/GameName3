@@ -121,23 +121,23 @@ namespace GameName3
         {
             if (getIsMoving() && moveLeft)
             {
-                sb.Draw(tex, new Vector2((x * 64 + 64 * getWalkTimer() / 1000), y * (64)));
+                sb.Draw(tex, new Vector2((x * 64 + 64 * getWalkTimer() / 1000) - cameraX, y * (64) - cameraY));
             }
             else if (getIsMoving() && moveRight)
             {
-                sb.Draw(tex, new Vector2((x * 64 - 64 * getWalkTimer() / 1000), y * (64)));
+                sb.Draw(tex, new Vector2((x * 64 - 64 * getWalkTimer() / 1000) - cameraX, y * (64) - cameraY));
             }
             else if (getIsMoving() && moveDown)
             {
-                sb.Draw(tex, new Vector2((x * 64), (y * 64 - 64 * getWalkTimer() / 1000)));
+                sb.Draw(tex, new Vector2((x * 64) - cameraX, (y * 64 - 64 * getWalkTimer() / 1000) - cameraY));
             }
             else if (getIsMoving() && moveUp)
             {
-                sb.Draw(tex, new Vector2((x * 64), (y * 64 + 64 * getWalkTimer() / 1000)));
+                sb.Draw(tex, new Vector2((x * 64) - cameraX, (y * 64 + 64 * getWalkTimer() / 1000) - cameraY));
             }
             else
             {
-                sb.Draw(tex, new Vector2(x * 64, y * 64));
+                sb.Draw(tex, new Vector2(x * 64 - cameraX, y * 64 - cameraY));
             }
         }
 

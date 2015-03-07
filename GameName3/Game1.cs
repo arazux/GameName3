@@ -156,7 +156,7 @@ namespace GameName3
 
             foreach(NPC n in npcs)
             {
-                spriteBatch.Draw(n.tex, new Vector2(n.x * 64, n.y * 64));
+                spriteBatch.Draw(n.tex, new Vector2(n.x * 64 - player.cameraX, n.y * 64 - player.cameraY));
             }
 
 
