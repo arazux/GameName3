@@ -22,6 +22,10 @@ namespace GameName3
         SpriteBatch spriteBatch;
 
         public Player player;
+        public NPC enemy1;
+        public NPC enemy2;
+
+        public NPC[] npcs;
 
         public GameMap gameMap;
 
@@ -31,6 +35,7 @@ namespace GameName3
         private Texture2D wall;
         private Texture2D dragon;
         private Texture2D cat;
+        private Texture2D troll;
 
         private Texture2D[] test;
 
@@ -63,17 +68,22 @@ namespace GameName3
             wall = Content.Load<Texture2D>("TileSprites/wall"); // THIS STUFF SHOULD BE IN LOAD CONTENT ^^
             dragon = Content.Load<Texture2D>("TileSprites/dragon");
             cat = Content.Load<Texture2D>("TileSprites/katt");
+            troll = Content.Load<Texture2D>("TileSprites/troll");
 
             font = Content.Load<SpriteFont>("Test");
 
 
             // TODO: Add your initialization logic here
-            test = new Texture2D[] { grass, water, fire, wall, cat };
+            test = new Texture2D[] { grass, water, fire, wall, cat, troll };
 
             gameMap = new GameMap(20, 10, test);
 
 
-            player = new Player(4, 6, 6);
+            player = new Player(4, 6, 6, cat);
+            enemy1 = new NPC(7, 7, 0, dragon);
+            enemy2 = new NPC(9, 9, 0, troll);
+            npcs = new NPC[] { enemy1, enemy2 };
+             
 
 
             base.Initialize();
@@ -128,17 +138,12 @@ namespace GameName3
 
             gameMap.draw(spriteBatch);
 
-            switch(player.spriteType)
-            { 
-                case 1:
-                    break;
-                case 2:
-                    spriteBatch.Draw(dragon, new Vector2(player.x * 64, player.y * 64));
-                    break;
-                case 6:
-                    spriteBatch.Draw(cat, new Vector2(player.x * 64, player.y * 64));
-                    break;
-            
+
+            spriteBatch.Draw(player.test, new Vector2(player.x * 64, player.y * 64));
+
+            foreach(NPC n in npcs)
+            {
+                spriteBatch.Draw(n.test, new Vector2(n.x * 64, n.y * 64));
             }
 
 

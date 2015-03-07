@@ -5,3 +5,4 @@ Content\TileSprites\wall.xnb
 Content\TileSprites\dragon.xnb
 Content\Test.xnb
 Content\TileSprites\katt.xnb
+Content\TileSprites\troll.xnb

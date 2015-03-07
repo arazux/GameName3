@@ -9,3 +9,4 @@ C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\P
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\dragon.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\Test.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\katt.xnb
+C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\troll.xnb

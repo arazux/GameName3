@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace GameName3
 {
     public class Player : Entity
     {
 
-        public Player(int x, int y, int t)
+        public Player(int x, int y, int t, Texture2D test)
         {
             this.y = y;
             this.x = x;
             spriteType = t;
+            this.test = test;
         }
 
         public void Move(GameMap m)
