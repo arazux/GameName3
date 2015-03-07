@@ -159,6 +159,7 @@ namespace GameName3
 
             spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.x][player.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
             spriteBatch.DrawString(font, " TileTypeID : " + gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
+            spriteBatch.DrawString(font, " walkDelay : " + player.getWalkDelay(), new Vector2(10, 100), Color.Black);
 
             spriteBatch.DrawString(font, " Level : " + player.level.ToString(), new Vector2(1100, 10), Color.Black);
             spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1100, 40), Color.Black);
