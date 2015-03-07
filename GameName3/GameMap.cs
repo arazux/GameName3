@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 
 namespace GameName3
 {
@@ -18,10 +20,23 @@ namespace GameName3
         public int xTiles;
         public int yTiles;
 
-
-
         public GameMap(int x, int y, Texture2D[] tileSprites)
         {
+            try
+            {
+                using (StreamReader sr = new StreamReader("data/map1.txt"))
+                {
+                    String line = sr.ReadToEnd();
+                    Console.WriteLine(line);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+           
+
             xTiles = x;
             yTiles = y;
             map = new Tile[x][];
@@ -61,13 +76,13 @@ namespace GameName3
             map[3][4].setType(3);
             map[3][5].setType(3);
             map[3][6].setType(3);
-
-
-
-             
-
         }
 
+        public GameMap(Texture2D[] tileSprites)
+        {
+            this.tileSprites = tileSprites;
+
+        }
 
 
         public void Draw(SpriteBatch sb, Player p)
