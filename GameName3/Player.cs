@@ -18,6 +18,9 @@ namespace GameName3
         private bool moveUp, moveDown, moveLeft, moveRight;
         public int cameraX;
         public int cameraY;
+        public int level;
+        public int health;
+        public int damage;
 
         public Player(int x, int y, int t, Texture2D tex)
         {
@@ -29,6 +32,15 @@ namespace GameName3
             isMoving = false;
             walkDelay = 400;
             walkTimer = walkDelay;
+            level = 0;
+            health = 1;
+            damage = 1;
+        }
+
+        public void levelUp()
+        {
+            health += 5;
+            damage += 2;
         }
 
         public void Move(GameMap m)

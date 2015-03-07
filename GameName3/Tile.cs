@@ -24,7 +24,7 @@ namespace GameName3
             this.x = x;
             this.y = y;
 
-            if (t == 4)
+            if (t == 3)
                 walkable = false;
             else
                 walkable = true;
@@ -41,7 +41,7 @@ namespace GameName3
         {
             type = t;
 
-            if (t == 4)
+            if (t == 3)
                 walkable = false;
             else
                 walkable = true;
