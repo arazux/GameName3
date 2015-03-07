@@ -9,8 +9,10 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
+
 namespace GameName3
 {
+ 
 
 
     /// <summary>
@@ -40,6 +42,8 @@ namespace GameName3
         private Texture2D[] test;
 
         private SpriteFont font;
+
+
 
 
         public Game1()
