@@ -1,0 +1,180 @@
+﻿#region Using Statements
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.GamerServices;
+#endregion
+
+namespace GameName3
+{
+
+
+    /// <summary>
+    /// This is the main type for your game
+    /// </summary>
+    public class Game1 : Game
+    {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+
+        public Entity player;
+        public Entity player2;
+
+        public GameMap gameMap;
+
+        private Texture2D fire;
+        private Texture2D grass;
+        private Texture2D water;
+        private Texture2D wall;
+
+        private Texture2D[] test;
+
+
+
+        public Game1()
+            : base()
+        {
+        
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 640;
+            graphics.ApplyChanges();
+            Content.RootDirectory = "Content";
+        }
+
+        /// <summary>
+        /// Allows the game to perform any initialization it needs to before starting to run.
+        /// This is where it can query for any required services and load any non-graphic
+        /// related content.  Calling base.Initialize will enumerate through any components
+        /// and initialize them as well.
+        /// </summary>
+        protected override void Initialize()
+        {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            grass = Content.Load<Texture2D>("TileSprites/grass");
+            water = Content.Load<Texture2D>("TileSprites/water");
+            fire = Content.Load<Texture2D>("TileSprites/fire");
+            wall = Content.Load<Texture2D>("TileSprites/wall"); // THIS STUFF SHOULD BE IN LOAD CONTENT ^^
+
+
+            // TODO: Add your initialization logic here
+            test = new Texture2D[] { grass, water, fire, wall };
+
+            gameMap = new GameMap(20, 10, test);
+
+            player = new Entity(4, 6, 2);
+            player2 = new Entity(7, 9, 3);
+
+
+            base.Initialize();
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+  
+
+            // TODO: use this.Content to load your game content here
+        }
+
+        /// <summary>
+        /// UnloadContent will be called once per game and is the place to unload
+        /// all content.
+        /// </summary>
+        protected override void UnloadContent()
+        {
+            // TODO: Unload any non ContentManager content here
+        }
+
+        /// <summary>
+        /// Allows the game to run logic such as updating the world,
+        /// checking for collisions, gathering input, and playing audio.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime gameTime)
+        {
+            player.Update(gameMap);
+
+            /*
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Up))
+                player.Move(Keys.Up);
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Down))
+                player.y++;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Right))
+                player.x++;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Left))
+                player.x--;
+
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.W))
+                player2.y--;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.S))
+                player2.y++;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D))
+                player2.x++;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.A))
+                player2.x--;
+            // TODO: Add your update logic here
+            */
+            base.Update(gameTime);
+        }
+
+        /// <summary>
+        /// This is called when the game should draw itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin();
+
+            gameMap.draw(spriteBatch);
+
+            switch(player.spriteType)
+            { 
+                case 1:
+                    break;
+                case 2:
+                    spriteBatch.Draw(water, new Vector2(player.x * 64, player.y * 64));
+                    break;
+            
+            }
+
+            switch (player2.spriteType)
+            {
+                case 1:
+                    break;
+                case 2:
+                    spriteBatch.Draw(water, new Vector2(player2.x * 64, player2.y * 64));
+                    break;
+                case 3:
+                    spriteBatch.Draw(fire, new Vector2(player2.x * 64, player2.y * 64));
+                    break;
+
+            }  
+
+            spriteBatch.End();
+
+            // TODO: Add your drawing code here
+            base.Draw(gameTime);
+        }
+    }
+}
