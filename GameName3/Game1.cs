@@ -110,7 +110,7 @@ namespace GameName3
             // TODO: Add your initialization logic here
             test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
-            gameMap = new GameMap(100, 50, test);
+            gameMap = new GameMap(20, 20, test);
             draw = new MikeDraw();
             draw.setFont(font, spriteBatch);
 
