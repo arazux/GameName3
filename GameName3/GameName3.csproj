@@ -54,9 +54,7 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GameName3Content\GameName3Content\GameName3Content.csproj">
       <Project>{250f60f1-cc13-4826-8df5-048ccae31bbe}</Project>

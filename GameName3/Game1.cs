@@ -29,8 +29,6 @@ public class MikeDraw
 namespace GameName3
 {
  
-
-
     /// <summary>
     /// This is the main type for your game
     /// </summary>
@@ -45,7 +43,8 @@ namespace GameName3
         public NPC enemy1;
         public NPC enemy2;
 
-        public NPC[] npcs;
+
+        public List<NPC> npcs;
 
         public GameMap gameMap;
 
@@ -115,12 +114,15 @@ namespace GameName3
             draw.setFont(font, spriteBatch);
 
 
-            player = new Player(17, 15, 6, cat);
+            player = new Player(10, 12, 6, cat);
             enemy1 = new NPC(7, 7, 0, dragon);
             enemy2 = new NPC(9, 9, 0, troll);
-            npcs = new NPC[] { enemy1, enemy2 };
-            npcs[0].health = 5;
-            npcs[1].health = 10;
+
+            npcs = new List<NPC>();
+            npcs.Add(enemy1);
+            npcs.Add(enemy2);
+            npcs[0].health = 6;
+            npcs[1].health = 12;
 
             tType = 0;
 
@@ -213,14 +215,6 @@ namespace GameName3
                 spriteBatch.Draw(n.tex, new Vector2(n.x * 64 - player.cameraX, n.y * 64 - player.cameraY));
             }
 
-            /* 
-            for (int index = 0; index < 10; index++ )
-                spriteBatch.Draw(background, new Vector2(index*64, 640-64)); Rita ut fula gråa rutor för UI start
-            */
-
-            if (gameMap.map[player.x][player.y].getType() == 2)
-                player.levelUp();
-
             foreach (NPC n in npcs)
             {
                 if (player.x == n.x && player.y == n.y)
@@ -229,6 +223,7 @@ namespace GameName3
                     player.attack();
                     if (n.health <= 0)
                     {
+                        //npcs.Remove(player.target);
                         n.x = 200;
                         player.target = null;
                         player.levelUp();
@@ -239,25 +234,26 @@ namespace GameName3
 
             }
 
-            spriteBatch.DrawString(font, " X : " + player.x.ToString(), new Vector2(10, 10), Color.Black);
-            spriteBatch.DrawString(font, " Y : " + player.y.ToString(), new Vector2(120, 10), Color.Black);
-
             spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.x][player.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
-            spriteBatch.DrawString(font, " TileTypeID : " + gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
-            spriteBatch.DrawString(font, " walkDelay : " + player.getWalkDelay(), new Vector2(10, 100), Color.Black);
 
-            spriteBatch.DrawString(font, " Level : " + player.level.ToString(), new Vector2(1000, 10), Color.Black);
-            spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1000, 40), Color.Black);
-            spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1000, 70), Color.Black);
+            draw.drawString(" X : ", player.x, 10, 10);
+            draw.drawString(" Y : ", player.y, 120, 10);
 
-            spriteBatch.DrawString(font, " Next attack : " + (int)player.attackTimer/100, new Vector2(1000, 100), Color.Black);
+            //draw.drawString(" Walkable : ", gameMap.map[player.x][player.y].walkable.toString(), 10, 40);
+            draw.drawString(" TileTypeID : ", gameMap.map[player.x][player.y].getType(), 10, 70);
+            draw.drawString(" walkDelay : ", (int)player.getWalkDelay(), 10, 100);
+
+
+
+            draw.drawString(" Level : ", player.level, 1000, 10);
+            draw.drawString(" Health : ", player.health, 1000, 40);
+            draw.drawString(" Damage : ", player.damage, 1000, 70);
+
+
+            draw.drawString(" Next attack :", (int)player.attackTimer / 100, 1000, 100);
 
             draw.drawString(" Mouse X : ", oldState.X, 400, 500);
             draw.drawString(" Mouse Y : ", oldState.Y, 400, 540);
-
-            //draw.drawString(" Health : ", player.health, 500, 500 ); Egen klass för ett enklare rita ut strängar
-            // Slipper skicka med font, göra ny vector och slipper skicka med färg
-
 
             spriteBatch.End();
 
