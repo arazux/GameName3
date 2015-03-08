@@ -108,6 +108,7 @@ namespace GameName3
             map[3][5].setType(3);
             map[3][6].setType(3);
             */
+
         }
 
         public GameMap(Texture2D[] tileSprites)
