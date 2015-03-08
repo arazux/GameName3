@@ -56,6 +56,7 @@ namespace GameName3
         private Texture2D cat;
         private Texture2D troll;
         private Texture2D background;
+        private Texture2D background2;
 
         private int tType;
 
@@ -99,6 +100,7 @@ namespace GameName3
             cat = Content.Load<Texture2D>("TileSprites/katt");
             troll = Content.Load<Texture2D>("TileSprites/troll");
             background = Content.Load<Texture2D>("TileSprites/background");
+            background2 = Content.Load<Texture2D>("TileSprites/background2");
 
             font = Content.Load<SpriteFont>("Test");
 
@@ -209,6 +211,10 @@ namespace GameName3
 
             gameMap.Draw(spriteBatch, player);
             player.Draw(spriteBatch);
+            
+
+            spriteBatch.Draw(background, new Vector2(0, 576));
+            spriteBatch.Draw(background2, new Vector2(960, 0));
 
             foreach(NPC n in npcs)
             {

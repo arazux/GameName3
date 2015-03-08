@@ -80,7 +80,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\background.xnb</Output>
-      <Time>2015-03-08T00:57:36.5341543+01:00</Time>
+      <Time>2015-03-08T21:06:04.5125947+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TileSprites\background2.png</Source>
+      <Name>TileSprites\background2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mike\Documents\GitHub\GameName3\GameName3Content\GameName3Content\bin\PSM\Content\TileSprites\background2.xnb</Output>
+      <Time>2015-03-08T21:07:15.0479859+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
