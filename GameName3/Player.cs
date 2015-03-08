@@ -24,6 +24,7 @@ namespace GameName3
         public NPC target;
         public bool canAttack;
         public float attackTimer;
+        public int gold;
 
         public Player(int x, int y, int t, Texture2D tex)
         {
@@ -40,6 +41,7 @@ namespace GameName3
             damage = 1;
             target = null;
             canAttack = true;
+            gold = 0;
         }
 
         public void attack()
