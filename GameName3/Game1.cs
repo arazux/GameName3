@@ -223,12 +223,12 @@ namespace GameName3
                     player.attack();
                     if (n.health <= 0)
                     {
-                        //npcs.Remove(player.target);
-                        n.x = 200;
+                        npcs.Remove(n);
+                        //n.x = 200;
                         player.target = null;
                         player.levelUp();
                     }
-                    spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
+                    //spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
                     
                 }
 
