@@ -39,6 +39,8 @@ namespace GameName3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+
+
         public Player player;
         public NPC enemy1;
         public NPC enemy2;
@@ -61,6 +63,8 @@ namespace GameName3
         private SpriteFont font;
 
         public MikeDraw draw;
+
+        private MouseState oldState;
  
 
 
@@ -96,6 +100,8 @@ namespace GameName3
             background = Content.Load<Texture2D>("TileSprites/background");
 
             font = Content.Load<SpriteFont>("Test");
+
+            this.IsMouseVisible = true;
 
 
 
@@ -150,6 +156,15 @@ namespace GameName3
         protected override void Update(GameTime gameTime)
         {
             player.Update(gameMap, gameTime);
+
+            MouseState newState = Mouse.GetState();
+
+            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
+            {
+                player.level++;
+            }
+
+            oldState = newState; // this reassigns the old state so that it is ready for next time
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -220,7 +235,8 @@ namespace GameName3
 
             spriteBatch.DrawString(font, " Next attack : " + (int)player.attackTimer/100, new Vector2(1000, 100), Color.Black);
 
-            draw.drawString(" Health : ", player.health, 500, 500);
+            //draw.drawString(" Health : ", player.health, 500, 500 ); Egen klass för ett enklare rita ut strängar
+            // Slipper skicka med font, göra ny vector och slipper skicka med färg
 
 
             spriteBatch.End();
