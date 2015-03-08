@@ -39,7 +39,7 @@ namespace GameName3
                         for (int i = 0; i < line.Count(); i++)
                         {
                             data.Add(Convert.ToInt16(Convert.ToString(line[i])));
-                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, rows);
+                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), rows, i);
                         }
 
                         rows++;
@@ -69,7 +69,7 @@ namespace GameName3
             xTiles = x;
             yTiles = y;
             /*
-            
+          
             map = new Tile[x][];
             this.tileSprites = tileSprites;
             int row = 0;

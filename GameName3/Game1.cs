@@ -114,7 +114,7 @@ namespace GameName3
             draw.setFont(font, spriteBatch);
 
 
-            player = new Player(10, 12, 6, cat);
+            player = new Player(3, 3, 6, cat);
             enemy1 = new NPC(7, 7, 0, dragon);
             enemy2 = new NPC(9, 9, 0, troll);
 
