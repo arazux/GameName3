@@ -68,46 +68,6 @@ namespace GameName3
             }
             xTiles = x;
             yTiles = y;
-            /*
-          
-            map = new Tile[x][];
-            this.tileSprites = tileSprites;
-            int row = 0;
-            int index = 0;
-            while (row < x)
-            {
-                int col = 0;
-                while (col < y)
-                {
-                    if (col == 0)
-                    {
-                        map[row] = new Tile[y];
-                    }
-                    map[row][col] = new Tile(0, row, col);
-                    col++;
-                    index++;
-                }
-                row++;
-            }
-
-            map[1][1].setType(3);
-            map[1][2].setType(3);
-            map[1][3].setType(3);
-            map[1][4].setType(3);
-            map[1][5].setType(3);
-            map[1][6].setType(3);
-
-            map[2][2].setType(2);
-
-            map[2][1].setType(3);
-
-            map[3][1].setType(3);
-            map[3][2].setType(3);
-            map[3][3].setType(3);
-            map[3][4].setType(3);
-            map[3][5].setType(3);
-            map[3][6].setType(3);
-            */
 
         }
 
