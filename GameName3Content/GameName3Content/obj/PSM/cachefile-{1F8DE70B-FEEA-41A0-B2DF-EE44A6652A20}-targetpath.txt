@@ -3,7 +3,7 @@ Content\TileSprites\water.xnb
 Content\TileSprites\fire.xnb
 Content\TileSprites\wall.xnb
 Content\TileSprites\dragon.xnb
+Content\Test.xnb
 Content\TileSprites\katt.xnb
 Content\TileSprites\troll.xnb
 Content\TileSprites\background.xnb
-Content\Test.xnb
