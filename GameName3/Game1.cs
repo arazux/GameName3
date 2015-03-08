@@ -111,12 +111,12 @@ namespace GameName3
             // TODO: Add your initialization logic here
             test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
-            gameMap = new GameMap(100, 50, test);
+            gameMap = new GameMap(72, 25, test);
             draw = new MikeDraw();
             draw.setFont(font, spriteBatch);
 
 
-            player = new Player(3, 3, 6, cat);
+            player = new Player(5, 5, 6, cat);
             enemy1 = new NPC(7, 7, 0, dragon);
             enemy2 = new NPC(9, 9, 0, troll);
 
@@ -127,6 +127,8 @@ namespace GameName3
             npcs[1].health = 12;
 
             tType = 0;
+
+            //gameMap.map[4][4].walkable = false;
 
              
 
@@ -227,7 +229,7 @@ namespace GameName3
                 {
                     player.target = n;
 
-                    if(                    player.attack() )
+                    if( player.attack() )
                     {
                         n.Retaliate(player);
                     }
@@ -272,6 +274,11 @@ namespace GameName3
 
             draw.drawString(" Mouse X : ", oldState.X, 400, 500);
             draw.drawString(" Mouse Y : ", oldState.Y, 400, 540);
+
+            draw.drawString(" Camera X : ", player.cameraX, 400, 420);
+            draw.drawString(" Camera Y : ", player.cameraY, 400, 460);
+
+            draw.drawString(" TestX : ", player.cameraY, 400, 380);
 
             spriteBatch.End();
 

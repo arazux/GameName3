@@ -16,41 +16,44 @@ namespace GameName3
         public static int tileWidth = 64;
         public static int tileHeight = 64;
         public Texture2D[] tileSprites;
-        public int xTiles;
-        public int yTiles;
+        public int mapX;
+        public int mapY;
 
         public GameMap(int x, int y, Texture2D[] tileSprites)
         {
             this.tileSprites = tileSprites;
             try
             {
-
+                
                 using (StreamReader sr = new StreamReader("Content/map2.txt"))
                 {
                     int lineCount = File.ReadLines("Content/map2.txt").Count();
-                    map = new Tile[lineCount][];
+                    map = new Tile[72][];
                     String line;
-                    int rows = 0;
+                    int xValue = 0;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        map[rows] = new Tile[line.Count()];
-                        for (int i = 0; i < line.Count(); i++)
+                        map[xValue] = new Tile[lineCount];
+                        for (int i = 0; i < 72; i++)
                         {
-                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, rows);
+                            map[i][xValue] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), xValue, i);
                         }
 
-                        rows++;
+                        xValue++;
                     }
 
                 }
+
+
+
+                mapX = 72;
+                mapY = 25;
             }
             catch (Exception e)
             {
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
-            xTiles = x;
-            yTiles = y;
         }
 
         public GameMap(Texture2D[] tileSprites)
@@ -62,9 +65,9 @@ namespace GameName3
 
         public void Draw(SpriteBatch sb, Player p)
         {
-            for (int row = 0; row < map.Length; row++)
+            for (int row = 0; row < mapY; row++)
             {
-                for (int col = 0; col < map[0].Length; col++)
+                for (int col = 0; col < mapX; col++)
                 { 
                     p.cameraX = (p.x * 64) - 640;
                     p.cameraY = (p.y * 64) - 320;

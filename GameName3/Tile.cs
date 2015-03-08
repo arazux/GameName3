@@ -20,14 +20,11 @@ namespace GameName3
 
         public Tile(int t, int x, int y)
         {
-            type = t;
             this.x = x;
             this.y = y;
+            walkable = true;
 
-            if (t == 3)
-                walkable = false;
-            else
-                walkable = true;
+            setType(t);
 
 
         }
@@ -39,7 +36,7 @@ namespace GameName3
 
         public void setType(int t)
         {
-            type = t;
+            this.type = t;
 
             if (t == 3)
                 walkable = false;
