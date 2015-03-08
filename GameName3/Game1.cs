@@ -90,7 +90,9 @@ namespace GameName3
             enemy1 = new NPC(7, 7, 0, dragon);
             enemy2 = new NPC(9, 9, 0, troll);
             npcs = new NPC[] { enemy1, enemy2 };
+            npcs[0].health = 5;
             npcs[1].health = 10;
+
              
 
 
@@ -166,16 +168,23 @@ namespace GameName3
             if (gameMap.map[player.x][player.y].getType() == 2)
                 player.levelUp();
 
-            if (player.x == npcs[1].x && player.y == npcs[1].y)
+            foreach (NPC n in npcs)
             {
-                player.target = npcs[1];
-                player.attack();
-                if( npcs[1].health < 1 )
+                if (player.x == n.x && player.y == n.y)
                 {
-                    npcs[1].x = 200;
+                    player.target = n;
+                    player.attack();
+                    if (n.health <= 0)
+                    {
+                        n.x = 200;
+                        player.target = null;
+                        player.levelUp();
+                    }
+                    spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
+                    
                 }
-            }
 
+            }
 
             spriteBatch.DrawString(font, " X : " + player.x.ToString(), new Vector2(10, 10), Color.Black);
             spriteBatch.DrawString(font, " Y : " + player.y.ToString(), new Vector2(120, 10), Color.Black);
@@ -188,7 +197,7 @@ namespace GameName3
             spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1100, 40), Color.Black);
             spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1100, 70), Color.Black);
 
-            spriteBatch.DrawString(font, " Troll Health : " + npcs[1].health.ToString(), new Vector2(450, 40), Color.Black);
+
 
 
             spriteBatch.End();

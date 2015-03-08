@@ -46,7 +46,7 @@ namespace GameName3
         {
             if( target != null && canAttack )
             {
-                target.health--;
+                target.health -= damage;
                 canAttack = false;
                 attackTimer = 1000;
             }
