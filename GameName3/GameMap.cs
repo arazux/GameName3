@@ -29,35 +29,18 @@ namespace GameName3
                 {
                     int lineCount = File.ReadLines("Content/map1.txt").Count();
                     map = new Tile[lineCount][];
-
                     String line;
-                    List<int> data = new List<int>();
                     int rows = 0;
                     while ((line = sr.ReadLine()) != null)
                     {
                         map[rows] = new Tile[line.Count()];
                         for (int i = 0; i < line.Count(); i++)
                         {
-                            data.Add(Convert.ToInt16(Convert.ToString(line[i])));
                             map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), rows, i);
                         }
 
                         rows++;
                     }
-                    /*
-                    for (int a = 0; a < map.Length; a++)
-                    {
-                        for (int b = 0; b < map[a].Length; b++)
-                        {
-
-                        }
-                    }
-                    */
-                    //Console.WriteLine(data.ElementAt(101));
-                    //String line = sr.ReadToEnd();
-                    //Console.WriteLine(line);
-
-
 
                 }
             }
@@ -68,47 +51,6 @@ namespace GameName3
             }
             xTiles = x;
             yTiles = y;
-            /*
-          
-            map = new Tile[x][];
-            this.tileSprites = tileSprites;
-            int row = 0;
-            int index = 0;
-            while (row < x)
-            {
-                int col = 0;
-                while (col < y)
-                {
-                    if (col == 0)
-                    {
-                        map[row] = new Tile[y];
-                    }
-                    map[row][col] = new Tile(0, row, col);
-                    col++;
-                    index++;
-                }
-                row++;
-            }
-
-            map[1][1].setType(3);
-            map[1][2].setType(3);
-            map[1][3].setType(3);
-            map[1][4].setType(3);
-            map[1][5].setType(3);
-            map[1][6].setType(3);
-
-            map[2][2].setType(2);
-
-            map[2][1].setType(3);
-
-            map[3][1].setType(3);
-            map[3][2].setType(3);
-            map[3][3].setType(3);
-            map[3][4].setType(3);
-            map[3][5].setType(3);
-            map[3][6].setType(3);
-            */
-
         }
 
         public GameMap(Texture2D[] tileSprites)
