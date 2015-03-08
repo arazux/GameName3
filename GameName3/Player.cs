@@ -37,21 +37,23 @@ namespace GameName3
             walkDelay = 400;
             walkTimer = walkDelay;
             level = 0;
-            health = 1;
+            health = 10;
             damage = 1;
             target = null;
             canAttack = true;
             gold = 0;
         }
 
-        public void attack()
+        public bool attack()
         {
             if( target != null && canAttack )
             {
                 target.health -= damage;
                 canAttack = false;
                 attackTimer = 1000;
+                return true;
             }
+            return false;
         }
 
         public void levelUp()

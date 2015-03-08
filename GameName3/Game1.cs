@@ -121,7 +121,7 @@ namespace GameName3
             npcs = new List<NPC>();
             npcs.Add(enemy1);
             npcs.Add(enemy2);
-            npcs[0].health = 6;
+            npcs[0].health = 3;
             npcs[1].health = 12;
 
             tType = 0;
@@ -220,14 +220,26 @@ namespace GameName3
                 if (player.x == n.x && player.y == n.y)
                 {
                     player.target = n;
-                    player.attack();
+
+                    if(                    player.attack() )
+                    {
+                        n.Retaliate(player);
+                    }
+
                     if (n.health <= 0)
                     {
                         npcs.Remove(n);
-                        //n.x = 200;
                         player.target = null;
                         player.levelUp();
+                        break;
+
                     }
+
+                    if(player.health <= 0)
+                    {
+                        Exit();
+                    }
+
                     spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
                     
                 }

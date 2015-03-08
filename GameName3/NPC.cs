@@ -10,12 +10,19 @@ namespace GameName3
     public class NPC : Entity
     {
         public int health;
+        public int damage;
         public NPC(int x, int y, int t, Texture2D tex )
         {
             this.x = x;
             this.y = y;
             this.spriteType = t;
             this.tex = tex;
+            damage = 2;
+        }
+
+        public void Retaliate(Player p)
+        {
+            p.health -= damage;
         }
     }
 }
