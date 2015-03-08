@@ -25,9 +25,9 @@ namespace GameName3
             try
             {
 
-                using (StreamReader sr = new StreamReader("Content/map1.txt"))
+                using (StreamReader sr = new StreamReader("Content/map2.txt"))
                 {
-                    int lineCount = File.ReadLines("Content/map1.txt").Count();
+                    int lineCount = File.ReadLines("Content/map2.txt").Count();
                     map = new Tile[lineCount][];
                     String line;
                     int rows = 0;
@@ -79,7 +79,8 @@ namespace GameName3
 
                     if (p.cameraY > 2560)
                         p.cameraY = 2560;
-                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].y * 64) - p.cameraX, (map[row][col].x * 64) - p.cameraY));
+
+                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
 
                   }
             }
