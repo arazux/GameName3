@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameName3", "GameName3\Game
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameName3Content", "GameName3Content\GameName3Content\GameName3Content.csproj", "{250F60F1-CC13-4826-8DF5-048CCAE31BBE}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GameName3ContentContent", "GameName3Content\GameName3ContentContent\GameName3ContentContent.contentproj", "{1F8DE70B-FEEA-41A0-B2DF-EE44A6652A20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameName3ContentContent", "GameName3Content\GameName3ContentContent\GameName3ContentContent.contentproj", "{1F8DE70B-FEEA-41A0-B2DF-EE44A6652A20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
