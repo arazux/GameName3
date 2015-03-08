@@ -228,7 +228,7 @@ namespace GameName3
                         player.target = null;
                         player.levelUp();
                     }
-                    //spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
+                    spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
                     
                 }
 

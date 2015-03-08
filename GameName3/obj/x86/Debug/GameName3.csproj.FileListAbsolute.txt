@@ -68,3 +68,5 @@ C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\SharpD
 C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\obj\x86\Debug\GameName3.csprojResolveAssemblyReference.cache
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\background.xnb
 C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\background.xnb
+C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\map1.txt
+C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\map1.txt

@@ -169,3 +169,15 @@ GameName3.v12.suo
 *.exe
 *.exe
 *.pdb
+*.suo
+*.cache
+GameName3Content/GameName3ContentContent/obj/PSM/DesignTimeResolveAssemblyReferencesInput.cache
+*.suo
+*.suo
+GameName3Content/GameName3ContentContent/obj/PSM/DesignTimeResolveAssemblyReferencesInput.cache
+GameName3.v12.suo
+*.exe
+GameName3/bin/Windows/Debug/GameName3.pdb
+*.exe
+GameName3/obj/x86/Debug/GameName3.pdb
+*.pdb

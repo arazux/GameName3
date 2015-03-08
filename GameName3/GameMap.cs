@@ -21,12 +21,44 @@ namespace GameName3
 
         public GameMap(int x, int y, Texture2D[] tileSprites)
         {
+            this.tileSprites = tileSprites;
             try
             {
-                using (StreamReader sr = new StreamReader("data/map1.txt"))
+
+                using (StreamReader sr = new StreamReader("Content/map1.txt"))
                 {
-                    String line = sr.ReadToEnd();
-                    Console.WriteLine(line);
+                    int lineCount = File.ReadLines("Content/map1.txt").Count();
+                    map = new Tile[lineCount][];
+
+                    String line;
+                    List<int> data = new List<int>();
+                    int rows = 0;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        map[rows] = new Tile[line.Count()];
+                        for (int i = 0; i < line.Count(); i++)
+                        {
+                            data.Add(Convert.ToInt16(Convert.ToString(line[i])));
+                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, rows);
+                        }
+
+                        rows++;
+                    }
+                    /*
+                    for (int a = 0; a < map.Length; a++)
+                    {
+                        for (int b = 0; b < map[a].Length; b++)
+                        {
+
+                        }
+                    }
+                    */
+                    //Console.WriteLine(data.ElementAt(101));
+                    //String line = sr.ReadToEnd();
+                    //Console.WriteLine(line);
+
+
+
                 }
             }
             catch (Exception e)
@@ -34,10 +66,10 @@ namespace GameName3
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
-           
-
             xTiles = x;
             yTiles = y;
+            /*
+
             map = new Tile[x][];
             this.tileSprites = tileSprites;
             int row = 0;
@@ -75,6 +107,7 @@ namespace GameName3
             map[3][4].setType(3);
             map[3][5].setType(3);
             map[3][6].setType(3);
+            */
         }
 
         public GameMap(Texture2D[] tileSprites)
@@ -103,7 +136,6 @@ namespace GameName3
 
                     if (p.cameraY > 2560)
                         p.cameraY = 2560;
-
                     sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
 
                   }

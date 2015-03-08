@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="Content\map1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
