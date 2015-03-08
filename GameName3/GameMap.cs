@@ -36,7 +36,7 @@ namespace GameName3
                         map[rows] = new Tile[line.Count()];
                         for (int i = 0; i < line.Count(); i++)
                         {
-                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), rows, i);
+                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, rows);
                         }
 
                         rows++;
@@ -79,7 +79,7 @@ namespace GameName3
 
                     if (p.cameraY > 2560)
                         p.cameraY = 2560;
-                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
+                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].y * 64) - p.cameraX, (map[row][col].x * 64) - p.cameraY));
 
                   }
             }
