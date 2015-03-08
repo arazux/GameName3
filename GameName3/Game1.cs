@@ -164,7 +164,7 @@ namespace GameName3
                 player.level++;
             }
 
-            oldState = newState; // this reassigns the old state so that it is ready for next time
+            oldState = newState;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
