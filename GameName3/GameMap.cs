@@ -70,9 +70,9 @@ namespace GameName3
 
         public void Draw(SpriteBatch sb, Player p)
         {
-            for (int row = 0; row < map.Length; row++)
+            for (int row = 0; row < mapY; row++)
             {
-                for (int col = 0; col < map[0].Length; col++)
+                for (int col = 0; col < mapX; col++)
                 { 
                     p.cameraX = (p.x * 64) - 640;
                     p.cameraY = (p.y * 64) - 320;

@@ -6,5 +6,6 @@ Content\TileSprites\dragon.xnb
 Content\TileSprites\katt.xnb
 Content\TileSprites\troll.xnb
 Content\TileSprites\background.xnb
+Content\Test.xnb
 Content\TileSprites\background2.xnb
 Content\Test.xnb
