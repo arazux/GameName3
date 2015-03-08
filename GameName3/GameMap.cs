@@ -29,9 +29,6 @@ namespace GameName3
 
                 using (StreamReader sr = new StreamReader("Content/map2.txt"))
                 {
-                    //Console.WriteLine(map.Length);
-                    //Console.WriteLine(sr.ReadLine());
-
                     int xCols = 0;
                     int yVal = File.ReadLines("Content/map2.txt").Count();
                    
@@ -39,7 +36,6 @@ namespace GameName3
                     int yRow = 0;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(yRow + ": " + line);
                         xCols = line.Count();
                         for (int i = 0; i < xCols; i++)
                         {
@@ -53,34 +49,8 @@ namespace GameName3
                         yRow++;
                         yTiles = yRow;
                     }
-                    xTiles = xCols;
-                    Console.WriteLine("Test: " + map[0].Length);
-                   
+                    xTiles = xCols; 
                 }
-
-
-                /*
-                using (StreamReader sr = new StreamReader("Content/map2.txt"))
-                {
-                    int lineCount = File.ReadLines("Content/map2.txt").Count();
-                    map = new Tile[lineCount][];
-                    String line;
-                    int rows = 0;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        map[rows] = new Tile[line.Count()];
-                        for (int i = 0; i < line.Count(); i++)
-                        {
-                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), rows, i);
-                        }
-                        yTiles = line.Count();
-                        rows++;
-                    }
-                    xTiles = rows;
-
-                    Console.WriteLine(map[0][2].getType());
-                }
-                 */
             }
             catch (Exception e)
             {
