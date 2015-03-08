@@ -58,6 +58,8 @@ namespace GameName3
         private Texture2D troll;
         private Texture2D background;
 
+        private int tType;
+
         private Texture2D[] test;
 
         private SpriteFont font;
@@ -120,6 +122,8 @@ namespace GameName3
             npcs[0].health = 5;
             npcs[1].health = 10;
 
+            tType = 0;
+
              
 
 
@@ -161,7 +165,8 @@ namespace GameName3
 
             if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
             {
-                player.level++;
+                gameMap.map[((int)oldState.X + player.cameraX) / 64][((int)oldState.Y + player.cameraY) / 64].setType(tType);
+
             }
 
             oldState = newState;
@@ -174,6 +179,18 @@ namespace GameName3
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.P))
                 player.decMoveDelay();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D0))
+                tType = 0;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D1))
+                tType = 1;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D2))
+                tType = 2;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D3))
+                tType = 3;
 
             // TODO: Add your update logic here
             base.Update(gameTime);
@@ -234,6 +251,9 @@ namespace GameName3
             spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1000, 70), Color.Black);
 
             spriteBatch.DrawString(font, " Next attack : " + (int)player.attackTimer/100, new Vector2(1000, 100), Color.Black);
+
+            draw.drawString(" Mouse X : ", oldState.X, 400, 500);
+            draw.drawString(" Mouse Y : ", oldState.Y, 400, 540);
 
             //draw.drawString(" Health : ", player.health, 500, 500 ); Egen klass för ett enklare rita ut strängar
             // Slipper skicka med font, göra ny vector och slipper skicka med färg
