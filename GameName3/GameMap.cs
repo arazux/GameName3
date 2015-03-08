@@ -69,7 +69,7 @@ namespace GameName3
             xTiles = x;
             yTiles = y;
             /*
-
+            
             map = new Tile[x][];
             this.tileSprites = tileSprites;
             int row = 0;
