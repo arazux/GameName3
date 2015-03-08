@@ -166,3 +166,6 @@ GameName3/obj/x86/Debug/GameName3.pdb
 *.suo
 GameName3/Player.cs
 GameName3.v12.suo
+*.exe
+*.exe
+*.pdb
