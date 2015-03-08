@@ -109,7 +109,7 @@ namespace GameName3
             // TODO: Add your initialization logic here
             test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
-            gameMap = new GameMap(20, 20, test);
+            gameMap = new GameMap(100, 50, test);
             draw = new MikeDraw();
             draw.setFont(font, spriteBatch);
 
@@ -223,8 +223,8 @@ namespace GameName3
                     player.attack();
                     if (n.health <= 0)
                     {
-                        //npcs.Remove(player.target);
-                        n.x = 200;
+                        npcs.Remove(n);
+                        //n.x = 200;
                         player.target = null;
                         player.levelUp();
                     }
