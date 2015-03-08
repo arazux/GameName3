@@ -24,7 +24,42 @@ namespace GameName3
             this.tileSprites = tileSprites;
             try
             {
+                StreamReader tempSR = new StreamReader("Content/map2.txt");
+                map = new Tile[tempSR.ReadLine().Count()][];
 
+                using (StreamReader sr = new StreamReader("Content/map2.txt"))
+                {
+                    //Console.WriteLine(map.Length);
+                    //Console.WriteLine(sr.ReadLine());
+
+                    int xCols = 0;
+                    int yVal = File.ReadLines("Content/map2.txt").Count();
+                   
+                    String line;
+                    int yRow = 0;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(yRow + ": " + line);
+                        xCols = line.Count();
+                        for (int i = 0; i < xCols; i++)
+                        {
+                            if (yRow == 0)
+                            {
+                                map[i] = new Tile[yVal];
+                            }
+                            map[i][yRow] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, yRow);
+                        }
+                       
+                        yRow++;
+                        yTiles = yRow;
+                    }
+                    xTiles = xCols;
+                    Console.WriteLine("Test: " + map[0].Length);
+                   
+                }
+
+
+                /*
                 using (StreamReader sr = new StreamReader("Content/map2.txt"))
                 {
                     int lineCount = File.ReadLines("Content/map2.txt").Count();
@@ -43,7 +78,9 @@ namespace GameName3
                     }
                     xTiles = rows;
 
+                    Console.WriteLine(map[0][2].getType());
                 }
+                 */
             }
             catch (Exception e)
             {
@@ -63,6 +100,7 @@ namespace GameName3
 
         public void Draw(SpriteBatch sb, Player p)
         {
+
             for (int row = 0; row < map.Length; row++)
             {
                 for (int col = 0; col < map[0].Length; col++)
@@ -82,7 +120,6 @@ namespace GameName3
                         p.cameraY = 2560;
 
                     sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
-
                   }
             }
         }

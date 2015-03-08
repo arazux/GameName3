@@ -111,7 +111,7 @@ namespace GameName3
             // TODO: Add your initialization logic here
             test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
-            gameMap = new GameMap(100, 50, test);
+            //gameMap = new GameMap(100, 50, test);
             draw = new MikeDraw();
             draw.setFont(font, spriteBatch);
 
@@ -141,7 +141,7 @@ namespace GameName3
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-  
+            gameMap = new GameMap(100, 50, test);
 
             // TODO: use this.Content to load your game content here
         }
