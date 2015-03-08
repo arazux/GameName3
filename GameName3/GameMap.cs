@@ -29,35 +29,18 @@ namespace GameName3
                 {
                     int lineCount = File.ReadLines("Content/map1.txt").Count();
                     map = new Tile[lineCount][];
-
                     String line;
-                    List<int> data = new List<int>();
                     int rows = 0;
                     while ((line = sr.ReadLine()) != null)
                     {
                         map[rows] = new Tile[line.Count()];
                         for (int i = 0; i < line.Count(); i++)
                         {
-                            data.Add(Convert.ToInt16(Convert.ToString(line[i])));
-                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), rows, i);
+                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, rows);
                         }
 
                         rows++;
                     }
-                    /*
-                    for (int a = 0; a < map.Length; a++)
-                    {
-                        for (int b = 0; b < map[a].Length; b++)
-                        {
-
-                        }
-                    }
-                    */
-                    //Console.WriteLine(data.ElementAt(101));
-                    //String line = sr.ReadToEnd();
-                    //Console.WriteLine(line);
-
-
 
                 }
             }
@@ -68,7 +51,6 @@ namespace GameName3
             }
             xTiles = x;
             yTiles = y;
-
         }
 
         public GameMap(Texture2D[] tileSprites)
@@ -97,7 +79,7 @@ namespace GameName3
 
                     if (p.cameraY > 2560)
                         p.cameraY = 2560;
-                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
+                    sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].y * 64) - p.cameraX, (map[row][col].x * 64) - p.cameraY));
 
                   }
             }
