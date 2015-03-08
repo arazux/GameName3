@@ -197,8 +197,9 @@ namespace GameName3
             }
 
             attackTimer -= gameTime.ElapsedGameTime.Milliseconds;
-            if( attackTimer < 0 )
+            if( attackTimer <= 0 )
             {
+                attackTimer = 0;
                 canAttack = true;
             }
 

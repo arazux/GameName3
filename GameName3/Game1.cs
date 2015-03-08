@@ -10,6 +10,22 @@ using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
 
+public class MikeDraw
+{
+    SpriteFont font;
+    SpriteBatch sba;
+    public void setFont(SpriteFont f, SpriteBatch s)
+    {
+        font = f;
+        sba = s;
+    }
+
+    public void drawString(string s, int var, int x, int y)
+    {
+        sba.DrawString(font, s + var.ToString(), new Vector2(x, y), Color.Black);
+    }
+}
+
 namespace GameName3
 {
  
@@ -43,6 +59,9 @@ namespace GameName3
         private Texture2D[] test;
 
         private SpriteFont font;
+
+        public MikeDraw draw;
+ 
 
 
 
@@ -84,6 +103,8 @@ namespace GameName3
             test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
             gameMap = new GameMap(100, 50, test);
+            draw = new MikeDraw();
+            draw.setFont(font, spriteBatch);
 
 
             player = new Player(17, 15, 6, cat);
@@ -193,11 +214,13 @@ namespace GameName3
             spriteBatch.DrawString(font, " TileTypeID : " + gameMap.map[player.x][player.y].getType().ToString(), new Vector2(10, 70), Color.Black);
             spriteBatch.DrawString(font, " walkDelay : " + player.getWalkDelay(), new Vector2(10, 100), Color.Black);
 
-            spriteBatch.DrawString(font, " Level : " + player.level.ToString(), new Vector2(1100, 10), Color.Black);
-            spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1100, 40), Color.Black);
-            spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1100, 70), Color.Black);
+            spriteBatch.DrawString(font, " Level : " + player.level.ToString(), new Vector2(1000, 10), Color.Black);
+            spriteBatch.DrawString(font, " Health : " + player.health.ToString(), new Vector2(1000, 40), Color.Black);
+            spriteBatch.DrawString(font, " Damage : " + player.damage.ToString(), new Vector2(1000, 70), Color.Black);
 
+            spriteBatch.DrawString(font, " Next attack : " + (int)player.attackTimer/100, new Vector2(1000, 100), Color.Black);
 
+            draw.drawString(" Health : ", player.health, 500, 500);
 
 
             spriteBatch.End();
