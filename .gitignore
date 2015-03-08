@@ -184,3 +184,5 @@ FakesAssemblies/
 *.suo
 *.pdb
 *.exe
+*.suo
+*.pdb

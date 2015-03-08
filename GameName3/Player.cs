@@ -83,7 +83,7 @@ namespace GameName3
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                if (y < m.yTiles - 1 )
+                if (y < m.mapY - 1 )
                 {
                     if (m.map[x][y + 1].walkable)
                     {
@@ -95,7 +95,7 @@ namespace GameName3
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                if (x < m.xTiles - 1 )
+                if (x < m.mapX - 1 )
                 {
                     if (m.map[x + 1][y].walkable)
                     {

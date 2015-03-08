@@ -16,8 +16,8 @@ namespace GameName3
         public static int tileWidth = 64;
         public static int tileHeight = 64;
         public Texture2D[] tileSprites;
-        public int xTiles;
-        public int yTiles;
+        public int mapX;
+        public int mapY;
 
         public GameMap(int x, int y, Texture2D[] tileSprites)
         {
@@ -31,11 +31,12 @@ namespace GameName3
                 {
                     int xCols = 0;
                     int yVal = File.ReadLines("Content/map2.txt").Count();
-                   
+
                     String line;
                     int yRow = 0;
                     while ((line = sr.ReadLine()) != null)
                     {
+                        Console.WriteLine(yRow + ": " + line);
                         xCols = line.Count();
                         for (int i = 0; i < xCols; i++)
                         {
@@ -45,11 +46,13 @@ namespace GameName3
                             }
                             map[i][yRow] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, yRow);
                         }
-                       
+
                         yRow++;
-                        yTiles = yRow;
+                        mapY = yRow;
                     }
-                    xTiles = xCols; 
+                    mapX = xCols;
+                    Console.WriteLine("Test: " + map[0].Length);
+
                 }
             }
             catch (Exception e)
@@ -57,8 +60,6 @@ namespace GameName3
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
-            
-
         }
 
         public GameMap(Texture2D[] tileSprites)
@@ -70,10 +71,9 @@ namespace GameName3
 
         public void Draw(SpriteBatch sb, Player p)
         {
-
-            for (int row = 0; row < map.Length; row++)
+            for (int row = 0; row < mapY; row++)
             {
-                for (int col = 0; col < map[0].Length; col++)
+                for (int col = 0; col < mapX; col++)
                 { 
                     p.cameraX = (p.x * 64) - 640;
                     p.cameraY = (p.y * 64) - 320;
@@ -90,6 +90,7 @@ namespace GameName3
                         p.cameraY = 2560;
 
                     sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
+
                   }
             }
         }
