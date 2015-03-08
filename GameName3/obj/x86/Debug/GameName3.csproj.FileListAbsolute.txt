@@ -72,3 +72,5 @@ C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Conten
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\map1.txt
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\background2.xnb
 C:\Users\Mike\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\map2.txt
+C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\TileSprites\background2.xnb
+C:\Users\steve_000\Documents\GitHub\GameName3\GameName3\bin\Windows\Debug\Content\map2.txt

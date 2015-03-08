@@ -36,11 +36,12 @@ namespace GameName3
                         map[rows] = new Tile[line.Count()];
                         for (int i = 0; i < line.Count(); i++)
                         {
-                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), i, rows);
+                            map[rows][i] = new Tile(Convert.ToInt16(Convert.ToString(line[i])), rows, i);
                         }
-
+                        yTiles = line.Count();
                         rows++;
                     }
+                    xTiles = rows;
 
                 }
             }
@@ -49,8 +50,8 @@ namespace GameName3
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
-            xTiles = x;
-            yTiles = y;
+            
+
         }
 
         public GameMap(Texture2D[] tileSprites)
