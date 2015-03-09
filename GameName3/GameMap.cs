@@ -15,11 +15,11 @@ namespace GameName3
         public Tile[][] map;
         public static int tileWidth = 64;
         public static int tileHeight = 64;
-        public Texture2D[] tileSprites;
+        public List<Texture2D> tileSprites;
         public int mapX;
         public int mapY;
 
-        public GameMap(int x, int y, Texture2D[] tileSprites)
+        public GameMap(int x, int y, List<Texture2D> tileSprites)
         {
             this.tileSprites = tileSprites;
             try
@@ -61,7 +61,7 @@ namespace GameName3
             }
         }
 
-        public GameMap(Texture2D[] tileSprites)
+        public GameMap(List<Texture2D> tileSprites)
         {
             this.tileSprites = tileSprites;
 
@@ -74,8 +74,8 @@ namespace GameName3
             {
                 for (int col = 0; col < map[0].Length; col++)
                 { 
-                    p.cameraX = (p.x * 64) - 640;
-                    p.cameraY = (p.y * 64) - 320;
+                    p.cameraX = (p.pos.x * 64) - 640;
+                    p.cameraY = (p.pos.y * 64) - 320;
                     if (p.cameraX < 0)
                         p.cameraX = 0;
 

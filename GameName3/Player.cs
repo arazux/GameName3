@@ -28,9 +28,7 @@ namespace GameName3
 
         public Player(int x, int y, int t, Texture2D tex)
         {
-            this.y = y;
-            this.x = x;
-            spriteType = t;
+            pos = new Position(x, y);
             this.tex = tex;
             canWalk = true;
             isMoving = false;
@@ -68,12 +66,12 @@ namespace GameName3
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                if (y > 0)
+                if (pos.y > 0)
                 {
-                    if (m.map[x][y - 1].walkable)
+                    if (m.map[pos.x][pos.y - 1].walkable)
                     {
                         moveUp = true;
-                        this.y--;
+                        pos.y--;
                     }
                         
                    
@@ -83,24 +81,24 @@ namespace GameName3
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                if (y < m.mapY - 1 )
+                if (pos.y < m.mapY - 1 )
                 {
-                    if (m.map[x][y + 1].walkable)
+                    if (m.map[pos.x][pos.y + 1].walkable)
                     {
                         moveDown = true;
-                        this.y++;
+                        pos.y++;
                     }
                         
                 }
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                if (x < m.mapX - 1 )
+                if (pos.x < m.mapX - 1 )
                 {
-                    if (m.map[x + 1][y].walkable)
+                    if (m.map[pos.x + 1][pos.y].walkable)
                     {
                         moveRight = true;
-                        this.x++;
+                        pos.x++;
                     }
                         
                 }
@@ -108,12 +106,12 @@ namespace GameName3
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                if (x > 0)
+                if (pos.x > 0)
                 {
-                    if (m.map[x - 1][y].walkable)
+                    if (m.map[pos.x - 1][pos.y].walkable)
                     {
                         moveLeft = true;
-                        this.x--;
+                        pos.x--;
                     }
                         
                 }
@@ -154,23 +152,23 @@ namespace GameName3
         {
             if (getIsMoving() && moveLeft)
             {
-                sb.Draw(tex, new Vector2((x * 64 + 64 * getWalkTimer() / 1000) - cameraX, y * (64) - cameraY));
+                sb.Draw(tex, new Vector2((pos.x * 64 + 64 * getWalkTimer() / 1000) - cameraX, pos.y * (64) - cameraY));
             }
             else if (getIsMoving() && moveRight)
             {
-                sb.Draw(tex, new Vector2((x * 64 - 64 * getWalkTimer() / 1000) - cameraX, y * (64) - cameraY));
+                sb.Draw(tex, new Vector2((pos.x * 64 - 64 * getWalkTimer() / 1000) - cameraX, pos.y * (64) - cameraY));
             }
             else if (getIsMoving() && moveDown)
             {
-                sb.Draw(tex, new Vector2((x * 64) - cameraX, (y * 64 - 64 * getWalkTimer() / 1000) - cameraY));
+                sb.Draw(tex, new Vector2((pos.x * 64) - cameraX, (pos.y * 64 - 64 * getWalkTimer() / 1000) - cameraY));
             }
             else if (getIsMoving() && moveUp)
             {
-                sb.Draw(tex, new Vector2((x * 64) - cameraX, (y * 64 + 64 * getWalkTimer() / 1000) - cameraY));
+                sb.Draw(tex, new Vector2((pos.x * 64) - cameraX, (pos.y * 64 + 64 * getWalkTimer() / 1000) - cameraY));
             }
             else
             {
-                sb.Draw(tex, new Vector2(x * 64 - cameraX, y * 64 - cameraY));
+                sb.Draw(tex, new Vector2(pos.x * 64 - cameraX, pos.y * 64 - cameraY));
             }
         }
 

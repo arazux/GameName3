@@ -10,22 +10,6 @@ using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
 
-public class MikeDraw
-{
-    SpriteFont font;
-    SpriteBatch sba;
-    public void setFont(SpriteFont f, SpriteBatch s)
-    {
-        font = f;
-        sba = s;
-    }
-
-    public void drawString(string s, int var, int x, int y)
-    {
-        sba.DrawString(font, s + var.ToString(), new Vector2(x, y), Color.Black);
-    }
-}
-
 namespace GameName3
 {
  
@@ -37,40 +21,29 @@ namespace GameName3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
-
         public Player player;
         public NPC enemy1;
         public NPC enemy2;
 
 
         public List<NPC> npcs;
+        public List<Texture2D> tileSprites;
+        public List<Texture2D> npcSprites;
+        public List<Texture2D> UISprites;
 
         public GameMap gameMap;
 
-        private Texture2D fire;
-        private Texture2D grass;
-        private Texture2D water;
-        private Texture2D wall;
-        private Texture2D dragon;
         private Texture2D cat;
-        private Texture2D troll;
-        private Texture2D background;
-        private Texture2D background2;
 
         private int tType;
 
-        private Texture2D[] test;
-
         private SpriteFont font;
 
-        public MikeDraw draw;
+        private EasyLoad load;
+
+        public EasyDraw draw;
 
         private MouseState oldState;
- 
-
-
-
 
         public Game1()
             : base()
@@ -91,34 +64,30 @@ namespace GameName3
         /// </summary>
         protected override void Initialize()
         {
+            load = new EasyLoad(Content);
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            grass = Content.Load<Texture2D>("TileSprites/grass");
-            water = Content.Load<Texture2D>("TileSprites/water");
-            fire = Content.Load<Texture2D>("TileSprites/fire");
-            wall = Content.Load<Texture2D>("TileSprites/wall"); // THIS STUFF SHOULD BE IN LOAD CONTENT ^^
-            dragon = Content.Load<Texture2D>("TileSprites/dragon");
-            cat = Content.Load<Texture2D>("TileSprites/katt");
-            troll = Content.Load<Texture2D>("TileSprites/troll");
-            background = Content.Load<Texture2D>("TileSprites/background");
-            background2 = Content.Load<Texture2D>("TileSprites/background2");
+
+            cat = load.LoadSprite("katt");
+
+            tileSprites = new List<Texture2D> { load.LoadSprite("grass"), load.LoadSprite("water"), load.LoadSprite("fire"), load.LoadSprite("wall") };
+            npcSprites = new List<Texture2D> { load.LoadSprite("dragon"), load.LoadSprite("troll") };
+            UISprites = new List<Texture2D> { load.LoadSprite("background"), load.LoadSprite("background2") };
 
             font = Content.Load<SpriteFont>("Test");
 
             this.IsMouseVisible = true;
 
-
-
             // TODO: Add your initialization logic here
-            test = new Texture2D[] { grass, water, fire, wall, cat, troll, background };
 
-            gameMap = new GameMap(72, 25, test);
-            draw = new MikeDraw();
+            gameMap = new GameMap(72, 25, tileSprites);
+            draw = new EasyDraw();
             draw.setFont(font, spriteBatch);
 
 
             player = new Player(2, 2, 6, cat);
-            enemy1 = new NPC(7, 7, 0, dragon);
-            enemy2 = new NPC(9, 9, 0, troll);
+            enemy1 = new NPC(7, 7, 0);
+            enemy2 = new NPC(9, 9, 1);
 
             npcs = new List<NPC>();
             npcs.Add(enemy1);
@@ -127,11 +96,6 @@ namespace GameName3
             npcs[1].health = 12;
 
             tType = 0;
-
-            //gameMap.map[4][4].walkable = false;
-
-             
-
 
             base.Initialize();
         }
@@ -215,17 +179,17 @@ namespace GameName3
             player.Draw(spriteBatch);
             
 
-            spriteBatch.Draw(background, new Vector2(0, 576));
-            spriteBatch.Draw(background2, new Vector2(960, 0));
+            spriteBatch.Draw(UISprites[0], new Vector2(0, 576));
+            spriteBatch.Draw(UISprites[1], new Vector2(960, 0));
 
             foreach(NPC n in npcs)
             {
-                spriteBatch.Draw(n.tex, new Vector2(n.x * 64 - player.cameraX, n.y * 64 - player.cameraY));
+                spriteBatch.Draw(npcSprites[n.ID], new Vector2(n.pos.x * 64 - player.cameraX, n.pos.y * 64 - player.cameraY));
             }
 
             foreach (NPC n in npcs)
             {
-                if (player.x == n.x && player.y == n.y)
+                if ( player.pos.isEqual(n.pos) )
                 {
                     player.target = n;
 
@@ -254,13 +218,13 @@ namespace GameName3
 
             }
 
-            spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.x][player.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
+            spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.pos.x][player.pos.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
 
-            draw.drawString(" X : ", player.x, 10, 10);
-            draw.drawString(" Y : ", player.y, 120, 10);
+            draw.drawString(" X : ", player.pos.x, 10, 10);
+            draw.drawString(" Y : ", player.pos.y, 120, 10);
 
             //draw.drawString(" Walkable : ", gameMap.map[player.x][player.y].walkable.toString(), 10, 40);
-            draw.drawString(" TileTypeID : ", gameMap.map[player.x][player.y].getType(), 10, 70);
+            draw.drawString(" TileTypeID : ", gameMap.map[player.pos.x][player.pos.y].getType(), 10, 70);
             draw.drawString(" walkDelay : ", (int)player.getWalkDelay(), 10, 100);
 
 
@@ -277,8 +241,6 @@ namespace GameName3
 
             draw.drawString(" Camera X : ", player.cameraX, 400, 420);
             draw.drawString(" Camera Y : ", player.cameraY, 400, 460);
-
-            draw.drawString(" TestX : ", player.cameraY, 400, 380);
 
             spriteBatch.End();
 

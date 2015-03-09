@@ -11,13 +11,12 @@ namespace GameName3
     {
         public int health;
         public int damage;
-        public NPC(int x, int y, int t, Texture2D tex )
+        public int ID;
+        public NPC(int x, int y, int id )
         {
-            this.x = x;
-            this.y = y;
-            this.spriteType = t;
-            this.tex = tex;
+            pos = new Position(x, y);
             damage = 2;
+            this.ID = id;
         }
 
         public void Retaliate(Player p)
