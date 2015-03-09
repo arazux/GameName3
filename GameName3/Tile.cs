@@ -15,7 +15,7 @@ namespace GameName3
 
         public Tile()
         {
-            type = 1;
+            type = 0;
         }
 
         public Tile(int t, int x, int y)

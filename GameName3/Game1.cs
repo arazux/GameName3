@@ -22,9 +22,6 @@ namespace GameName3
         SpriteBatch spriteBatch;
 
         public Player player;
-        public NPC enemy1;
-        public NPC enemy2;
-
 
         public List<NPC> npcs;
         public List<Texture2D> tileSprites;
@@ -86,12 +83,10 @@ namespace GameName3
 
 
             player = new Player(2, 2, 6, cat);
-            enemy1 = new NPC(7, 7, 0);
-            enemy2 = new NPC(9, 9, 1);
 
             npcs = new List<NPC>();
-            npcs.Add(enemy1);
-            npcs.Add(enemy2);
+            npcs.Add(new NPC(7, 7, 0));
+            npcs.Add(new NPC(9, 9, 1));
             npcs[0].health = 3;
             npcs[1].health = 12;
 

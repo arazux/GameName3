@@ -9,7 +9,6 @@ using System.IO;
 
 namespace GameName3
 {
-    enum TileTitle { Grass, Water, Fire, Wall }
     public class GameMap
     {
         public Tile[][] map;
