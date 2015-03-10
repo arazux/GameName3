@@ -18,13 +18,12 @@ namespace GameName3
         public int mapX;
         public int mapY;
         public String filePath;
-        public FileStream fs;
 
         public GameMap(int x, int y, List<Texture2D> tileSprites)
         {
             filePath = "Content/map2.txt";
             this.tileSprites = tileSprites;
-            fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             try
             {
                 int yVal = 0;
@@ -98,34 +97,36 @@ namespace GameName3
             }
             try
             {
-                fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                Console.WriteLine("Save File: " + filePath);
-                using (StreamWriter sw = new StreamWriter(fs))
+                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
+                    //Console.WriteLine("Save File: " + filePath);
+                    StreamWriter sw = new StreamWriter(fs);
                     sw.AutoFlush = true;
                     for (int i = 0; i < newFile.Length; i++)
                     {
                         sw.WriteLine(newFile[i]);
                     }
                 }
+
+                /*PROOF THAT FILE HAS BEEN OVERWRITTEN CORRECTLY. BUT REVERTS BACK AFTER APP EXIT.
+                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    StreamReader sr = new StreamReader(fs);
+                    fs.Position = 0;
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+                */
+
             }
             catch (IOException e)
             {
                 Console.WriteLine("Could not save file: ");
                 Console.WriteLine(e.Message);
             }
-            /*DEBUG CODE: finds which lines are not equal,
-             * C# seems to want to overwrite the whole file,
-             * otherwise this could be used to only rewrite
-             * changed lines.
-            String[] arrLine = File.ReadAllLines(filePath);
-            for (int a = 0; a < arrLine.Length; a++)
-            {
-                if(!arrLine[a].Equals(newFile[a])){
-                    Console.WriteLine("Line: " + a + " is not equal!");
-                }
-            }
-            */
         }
 
         public void Draw(SpriteBatch sb, Player p)
