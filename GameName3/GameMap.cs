@@ -93,5 +93,19 @@ namespace GameName3
             }
         }
 
+        #region Utilities
+        // Index operator to make for easier access of tiles.
+        public Tile this[Position pos]
+        {
+            get
+            {
+                return map[pos.x][pos.y];
+            }
+            private set
+            {
+                map[pos.x][pos.y] = value;
+            }
+        }
+        #endregion
     }
 }
