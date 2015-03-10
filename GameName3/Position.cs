@@ -21,7 +21,18 @@ namespace GameName3
             return this.x == p.y && this.y == p.y;
         }
 
-        public static bool operator ==(Position p1, Position p2)
+        public static bool operator !=(Position p1, Position p2)
+        {
+            if (System.Object.ReferenceEquals(p1, p2))
+                return true;
+
+            if (p1 == null || p2 == null)
+                return false;
+
+            return p1.x != p2.x && p1.y != p2.y;
+        }
+
+        public static bool operator == (Position p1, Position p2)
         {
             if (System.Object.ReferenceEquals(p1, p2))
                 return true;
