@@ -18,12 +18,13 @@ namespace GameName3
         public int mapX;
         public int mapY;
         public String filePath;
+        public FileStream fs;
 
         public GameMap(int x, int y, List<Texture2D> tileSprites)
         {
             filePath = "Content/map2.txt";
             this.tileSprites = tileSprites;
-            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
+            fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             try
             {
                 int yVal = 0;
@@ -81,6 +82,51 @@ namespace GameName3
 
         }
 
+        //Save Method. Every ROW has to be the same WIDTH or INDEXOUTOFBOUNDS
+        //BUG: Saves tiles to the file, but does not seem to be updated in file?
+        public void saveFile()
+        {
+            String[] newFile = new String[map[0].Length];
+            for (int i = 0; i < map[0].Length; i++)
+            {
+                String s = String.Empty;
+                for (int x = 0; x < map.Length; x++)
+                {
+                    s += Convert.ToString(map[x][i].getType());
+                }
+                newFile[i] = s;
+            }
+            try
+            {
+                fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                Console.WriteLine("Save File: " + filePath);
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.AutoFlush = true;
+                    for (int i = 0; i < newFile.Length; i++)
+                    {
+                        sw.WriteLine(newFile[i]);
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Could not save file: ");
+                Console.WriteLine(e.Message);
+            }
+            /*DEBUG CODE: finds which lines are not equal,
+             * C# seems to want to overwrite the whole file,
+             * otherwise this could be used to only rewrite
+             * changed lines.
+            String[] arrLine = File.ReadAllLines(filePath);
+            for (int a = 0; a < arrLine.Length; a++)
+            {
+                if(!arrLine[a].Equals(newFile[a])){
+                    Console.WriteLine("Line: " + a + " is not equal!");
+                }
+            }
+            */
+        }
 
         public void Draw(SpriteBatch sb, Player p)
         {

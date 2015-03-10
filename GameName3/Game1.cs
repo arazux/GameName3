@@ -157,6 +157,9 @@ namespace GameName3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D3))
                 tType = 3;
 
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.S))
+                gameMap.saveFile();
+
             // TODO: Add your update logic here
             base.Update(gameTime);
         }
