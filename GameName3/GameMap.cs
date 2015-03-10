@@ -17,26 +17,36 @@ namespace GameName3
         public List<Texture2D> tileSprites;
         public int mapX;
         public int mapY;
+        public String filePath;
 
         public GameMap(int x, int y, List<Texture2D> tileSprites)
         {
+            filePath = "Content/map2.txt";
             this.tileSprites = tileSprites;
+            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
             try
             {
-                StreamReader tempSR = new StreamReader("Content/map2.txt");
-                map = new Tile[tempSR.ReadLine().Count()][];
-
-                using (StreamReader sr = new StreamReader("Content/map2.txt"))
+                int yVal = 0;
+                using (StreamReader sr = new StreamReader(fs))
                 {
+                    while (sr.ReadLine() != null)
+                    {
+                        yVal++;
+                    }
+                    fs.Position = 0;
+
                     int xCols = 0;
-                    int yVal = File.ReadLines("Content/map2.txt").Count();
 
                     String line;
                     int yRow = 0;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(yRow + ": " + line);
                         xCols = line.Count();
+                        if (yRow == 0)
+                        {
+                            map = new Tile[xCols][];
+                        }
+
                         for (int i = 0; i < xCols; i++)
                         {
                             if (yRow == 0)
@@ -50,13 +60,18 @@ namespace GameName3
                         mapY = yRow;
                     }
                     mapX = xCols;
-
                 }
+
             }
             catch (Exception e)
             {
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                fs.Close();
+                fs.Dispose();
             }
         }
 
