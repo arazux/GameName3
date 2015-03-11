@@ -15,18 +15,15 @@ namespace GameName3
             cm = c;
         }
 
-        public Texture2D LoadSprite(string s, int index)
+        public Texture2D LoadSprite(string s)
         {
-           if (index == 0)
-           {
-               Console.WriteLine(s);
                return (cm.Load<Texture2D>("TileSprites/" + s));
-           }
-           else if (index == 1)
-           {
-               return (cm.Load<Texture2D>("Animations/" + s));
-           }
-           return null;
+
+        }
+
+        public Texture2D LoadAnimation(string s)
+        {
+                return (cm.Load<Texture2D>("Animations/" + s));
         }
     }
 }

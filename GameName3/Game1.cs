@@ -65,9 +65,9 @@ namespace GameName3
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            tileSprites = new List<Texture2D> { load.LoadSprite("grass2", 0), load.LoadSprite("water", 0), load.LoadSprite("fire", 0), load.LoadSprite("wall", 0) };
-            npcSprites = new List<Texture2D> { load.LoadSprite("dragon", 0), load.LoadSprite("troll", 0) };
-            UISprites = new List<Texture2D> { load.LoadSprite("background", 0), load.LoadSprite("background2", 0) };
+            tileSprites = new List<Texture2D> { load.LoadSprite("grass2"), load.LoadSprite("water"), load.LoadSprite("fire"), load.LoadSprite("wall") };
+            npcSprites = new List<Texture2D> { load.LoadSprite("dragon"), load.LoadSprite("troll") };
+            UISprites = new List<Texture2D> { load.LoadSprite("background"), load.LoadSprite("background2"), load.LoadSprite("inventory") };
 
             font = Content.Load<SpriteFont>("Test");
 

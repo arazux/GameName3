@@ -38,13 +38,13 @@ namespace GameName3
             pos = new Position(x, y);
             //this.tex = tex;
             this.load = load;
-            this.tex = load.LoadSprite("katt", 0);
+            this.tex = load.LoadSprite("katt");
 
             playerAnimSprites = new Texture2D[4];
-            playerAnimSprites[0] = load.LoadSprite("smile1", 1);
-            playerAnimSprites[1] = load.LoadSprite("smile2", 1);
-            playerAnimSprites[2] = load.LoadSprite("smile3", 1);
-            playerAnimSprites[3] = load.LoadSprite("smile4", 1);
+            playerAnimSprites[0] = load.LoadAnimation("smile1");
+            playerAnimSprites[1] = load.LoadAnimation("smile2");
+            playerAnimSprites[2] = load.LoadAnimation("smile3");
+            playerAnimSprites[3] = load.LoadAnimation("smile4");
 
             playerAnim = new Animation(playerAnimSprites, 1/12f);
             canWalk = true;
