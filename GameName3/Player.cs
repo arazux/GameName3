@@ -25,11 +25,24 @@ namespace GameName3
         public bool canAttack;
         public float attackTimer;
         public int gold;
+        private Texture2D[] playerAnimSprites;
+        private Animation playerAnim;
+        private EasyLoad load;
 
-        public Player(int x, int y, int t, Texture2D tex)
+        public Player(int x, int y, int t, EasyLoad load)
         {
             pos = new Position(x, y);
-            this.tex = tex;
+            //this.tex = tex;
+            this.load = load;
+            this.tex = load.LoadSprite("katt", 0);
+
+            playerAnimSprites = new Texture2D[4];
+            playerAnimSprites[0] = load.LoadSprite("smile1", 1);
+            playerAnimSprites[1] = load.LoadSprite("smile2", 1);
+            playerAnimSprites[2] = load.LoadSprite("smile3", 1);
+            playerAnimSprites[3] = load.LoadSprite("smile4", 1);
+
+            playerAnim = new Animation(playerAnimSprites, 1/12f);
             canWalk = true;
             isMoving = false;
             walkDelay = 400;
@@ -152,19 +165,19 @@ namespace GameName3
         {
             if (getIsMoving() && moveLeft)
             {
-                sb.Draw(tex, new Vector2((pos.x * 64 + 64 * getWalkTimer() / 1000) - cameraX, pos.y * (64) - cameraY));
+                sb.Draw(playerAnim.getFrame(), new Vector2((pos.x * 64 + 64 * getWalkTimer() / 1000) - cameraX, pos.y * (64) - cameraY));
             }
             else if (getIsMoving() && moveRight)
             {
-                sb.Draw(tex, new Vector2((pos.x * 64 - 64 * getWalkTimer() / 1000) - cameraX, pos.y * (64) - cameraY));
+                sb.Draw(playerAnim.getFrame(), new Vector2((pos.x * 64 - 64 * getWalkTimer() / 1000) - cameraX, pos.y * (64) - cameraY));
             }
             else if (getIsMoving() && moveDown)
             {
-                sb.Draw(tex, new Vector2((pos.x * 64) - cameraX, (pos.y * 64 - 64 * getWalkTimer() / 1000) - cameraY));
+                sb.Draw(playerAnim.getFrame(), new Vector2((pos.x * 64) - cameraX, (pos.y * 64 - 64 * getWalkTimer() / 1000) - cameraY));
             }
             else if (getIsMoving() && moveUp)
             {
-                sb.Draw(tex, new Vector2((pos.x * 64) - cameraX, (pos.y * 64 + 64 * getWalkTimer() / 1000) - cameraY));
+                sb.Draw(playerAnim.getFrame(), new Vector2((pos.x * 64) - cameraX, (pos.y * 64 + 64 * getWalkTimer() / 1000) - cameraY));
             }
             else
             {
@@ -174,6 +187,9 @@ namespace GameName3
 
         public void Update(GameMap m, GameTime gameTime)
         {
+            float delta = (float) gameTime.ElapsedGameTime.TotalSeconds;
+            playerAnim.update(delta);
+
             walkTimer -= gameTime.ElapsedGameTime.Milliseconds;
             if (walkTimer < 0)
             {

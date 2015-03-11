@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameName3
 {
-    class EasyLoad
+    public class EasyLoad
     {
         ContentManager cm;
         public EasyLoad(ContentManager c)
@@ -15,9 +15,18 @@ namespace GameName3
             cm = c;
         }
 
-        public Texture2D LoadSprite(string s)
+        public Texture2D LoadSprite(string s, int index)
         {
-            return (cm.Load<Texture2D>("TileSprites/" + s));
+           if (index == 0)
+           {
+               Console.WriteLine(s);
+               return (cm.Load<Texture2D>("TileSprites/" + s));
+           }
+           else if (index == 1)
+           {
+               return (cm.Load<Texture2D>("Animations/" + s));
+           }
+           return null;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace GameName3
 
         private SpriteFont font;
 
-        private EasyLoad load;
+        public EasyLoad load;
 
         public EasyDraw draw;
 
@@ -65,11 +65,9 @@ namespace GameName3
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            cat = load.LoadSprite("katt");
-
-            tileSprites = new List<Texture2D> { load.LoadSprite("grass"), load.LoadSprite("water"), load.LoadSprite("fire"), load.LoadSprite("wall") };
-            npcSprites = new List<Texture2D> { load.LoadSprite("dragon"), load.LoadSprite("troll") };
-            UISprites = new List<Texture2D> { load.LoadSprite("background"), load.LoadSprite("background2") };
+            tileSprites = new List<Texture2D> { load.LoadSprite("grass2", 0), load.LoadSprite("water", 0), load.LoadSprite("fire", 0), load.LoadSprite("wall", 0) };
+            npcSprites = new List<Texture2D> { load.LoadSprite("dragon", 0), load.LoadSprite("troll", 0) };
+            UISprites = new List<Texture2D> { load.LoadSprite("background", 0), load.LoadSprite("background2", 0) };
 
             font = Content.Load<SpriteFont>("Test");
 
@@ -77,12 +75,13 @@ namespace GameName3
 
             // TODO: Add your initialization logic here
 
-            gameMap = new GameMap(72, 25, tileSprites);
+            gameMap = new GameMap(tileSprites);
             draw = new EasyDraw();
             draw.setFont(font, spriteBatch);
 
+            cat = load.LoadSprite("katt", 0);
 
-            player = new Player(2, 2, 6, cat);
+            player = new Player(2, 2, 6, load);
 
             npcs = new List<NPC>();
             npcs.Add(new NPC(7, 7, 0));
@@ -102,9 +101,9 @@ namespace GameName3
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-  
-
             // TODO: use this.Content to load your game content here
+
+
         }
 
         /// <summary>

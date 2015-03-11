@@ -19,7 +19,7 @@ namespace GameName3
         public int mapY;
         public String filePath;
 
-        public GameMap(int x, int y, List<Texture2D> tileSprites)
+        public GameMap(List<Texture2D> tileSprites)
         {
             filePath = "Content/map2.txt";
             this.tileSprites = tileSprites;
@@ -73,12 +73,6 @@ namespace GameName3
                 fs.Close();
                 fs.Dispose();
             }
-        }
-
-        public GameMap(List<Texture2D> tileSprites)
-        {
-            this.tileSprites = tileSprites;
-
         }
 
         //Save Method. Every ROW has to be the same WIDTH or INDEXOUTOFBOUNDS

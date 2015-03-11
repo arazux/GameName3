@@ -35,6 +35,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animation.cs" />
     <Compile Include="EasyDraw.cs" />
     <Compile Include="EasyLoad.cs" />
     <Compile Include="Entity.cs" />
