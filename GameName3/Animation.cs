@@ -26,6 +26,20 @@ namespace GameName3
             timesPlayed = 0;
         }
 
+#region Private Members
+        private void step()
+        {
+            time -= delay;
+            currentFrame++;
+            if (currentFrame == frames.Length)
+            {
+                currentFrame = 0;
+                timesPlayed++;
+            }
+        }
+#endregion
+
+#region Public Members
         public void update(float delta)
         {
             if (delay <= 0)
@@ -41,18 +55,6 @@ namespace GameName3
 
         public void setDelay(float delay){
             this.delay = delay;
-        }
-
-
-        public void step()
-        {
-            time -= delay;
-            currentFrame++;
-            if (currentFrame == frames.Length)
-            {
-                currentFrame = 0;
-                timesPlayed++;
-            }
         }
 
         public void setCurrentFrame(int i )
@@ -83,4 +85,5 @@ namespace GameName3
         }
 
     }
+    #endregion
 }

@@ -173,7 +173,6 @@ namespace GameName3
             gameMap.Draw(spriteBatch, player);
             player.Draw(spriteBatch);
             
-
             spriteBatch.Draw(UISprites[0], new Vector2(0, 576));
             spriteBatch.Draw(UISprites[1], new Vector2(960, 0));
             player.drawInventory(UISprites[2], spriteBatch);
