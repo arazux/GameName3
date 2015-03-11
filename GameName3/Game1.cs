@@ -69,7 +69,7 @@ namespace GameName3
 
             tileSprites = new List<Texture2D> { load.LoadSprite("grass"), load.LoadSprite("water"), load.LoadSprite("fire"), load.LoadSprite("wall") };
             npcSprites = new List<Texture2D> { load.LoadSprite("dragon"), load.LoadSprite("troll") };
-            UISprites = new List<Texture2D> { load.LoadSprite("background"), load.LoadSprite("background2") };
+            UISprites = new List<Texture2D> { load.LoadSprite("background"), load.LoadSprite("background2"), load.LoadSprite("inventory") };
 
             font = Content.Load<SpriteFont>("Test");
 
@@ -179,6 +179,7 @@ namespace GameName3
 
             spriteBatch.Draw(UISprites[0], new Vector2(0, 576));
             spriteBatch.Draw(UISprites[1], new Vector2(960, 0));
+            player.drawInventory(UISprites[2], spriteBatch);
 
             foreach(NPC n in npcs)
             {
