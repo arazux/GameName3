@@ -18,12 +18,13 @@ namespace GameName3
         public int mapX;
         public int mapY;
         public String filePath;
+        public FileStream fs;
 
         public GameMap(List<Texture2D> tileSprites)
         {
             filePath = "Content/map2.txt";
             this.tileSprites = tileSprites;
-            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             try
             {
                 int yVal = 0;
@@ -89,9 +90,11 @@ namespace GameName3
                 }
                 newFile[i] = s;
             }
+
             try
             {
-                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                //using (FileStream fs = new FileStream("Content/map3.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                fs = new FileStream("Content/map4.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 {
                     //Console.WriteLine("Save File: " + filePath);
                     StreamWriter sw = new StreamWriter(fs);

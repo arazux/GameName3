@@ -79,8 +79,6 @@ namespace GameName3
             draw = new EasyDraw();
             draw.setFont(font, spriteBatch);
 
-            cat = load.LoadSprite("katt", 0);
-
             player = new Player(2, 2, 6, load);
 
             npcs = new List<NPC>();
@@ -178,6 +176,7 @@ namespace GameName3
 
             spriteBatch.Draw(UISprites[0], new Vector2(0, 576));
             spriteBatch.Draw(UISprites[1], new Vector2(960, 0));
+            player.drawInventory(UISprites[2], spriteBatch);
 
             foreach(NPC n in npcs)
             {

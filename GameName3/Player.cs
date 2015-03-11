@@ -25,9 +25,13 @@ namespace GameName3
         public bool canAttack;
         public float attackTimer;
         public int gold;
+
         private Texture2D[] playerAnimSprites;
         private Animation playerAnim;
         private EasyLoad load;
+
+        public Inventory inventory;
+
 
         public Player(int x, int y, int t, EasyLoad load)
         {
@@ -53,6 +57,7 @@ namespace GameName3
             target = null;
             canAttack = true;
             gold = 0;
+            inventory = new Inventory();
         }
 
         public bool attack()
@@ -73,6 +78,19 @@ namespace GameName3
             health += 5;
             damage += 2;
             walkDelay--;
+        }
+
+        public void drawInventory(Texture2D t, SpriteBatch sb)
+        {
+            for (int i = 0; i < inventory.size / 2; i++)
+            {
+                sb.Draw(t, new Vector2(960 + i*64, 480));
+            }
+
+            for (int i = 0; i < inventory.size / 2; i++)
+            {
+                sb.Draw(t, new Vector2(960 + i * 64, 480 + 64));
+            }
         }
 
         public void Move(GameMap m)

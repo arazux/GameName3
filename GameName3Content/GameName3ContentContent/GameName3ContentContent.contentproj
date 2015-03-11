@@ -142,6 +142,8 @@
     </Compile>
     <Compile Include="Animations\smile4.png">
       <Name>smile4</Name>
+    <Compile Include="TileSprites\inventory.png">
+      <Name>inventory</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
