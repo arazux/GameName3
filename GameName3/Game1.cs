@@ -34,6 +34,8 @@ namespace GameName3
 
         private SpriteFont font;
 
+        public int gamestate;
+
         public EasyLoad load;
 
         public EasyDraw draw;
@@ -72,9 +74,9 @@ namespace GameName3
 
             font = Content.Load<SpriteFont>("Test");
 
-            this.IsMouseVisible = true;
+            gamestate = 1;
 
-            // TODO: Add your initialization logic here
+            this.IsMouseVisible = true;
 
             gameMap = new GameMap(tileSprites);
             draw = new EasyDraw(font, spriteBatch);
@@ -121,22 +123,17 @@ namespace GameName3
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            player.Update(gameMap, gameTime);
-
-            showStringTimer -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             MouseState newState = Mouse.GetState();
-
-            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
-            {
-                gameMap.map[((int)oldState.X + player.cameraX) / 64][((int)oldState.Y + player.cameraY) / 64].setType(tType);
-
-            }
-
             oldState = newState;
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            switch (gamestate)
+            {
+                case 0:
+                    //LOGIN SCREEN ETC
+                    break;
+
+                case 1:
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.O))
                 player.incMoveDelay();
@@ -159,8 +156,30 @@ namespace GameName3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.S))
                 gameMap.saveFile();
 
-            // TODO: Add your update logic here
+            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
+            {
+                gameMap.map[((int)oldState.X + player.cameraX) / 64][((int)oldState.Y + player.cameraY) / 64].setType(tType);
+            }
+
+                    player.Update(gameMap, gameTime);
+                    showStringTimer -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                    break;
+            }
+
+
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.L))
+                gamestate = 0;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.G))
+                gamestate = 1;
+
             base.Update(gameTime);
+            base.Draw(gameTime);
         }
 
         /// <summary>
@@ -249,9 +268,6 @@ namespace GameName3
             draw.drawString(" Camera Y : ", player.cameraY, 400, 460);
 
             spriteBatch.End();
-
-            // TODO: Add your drawing code here
-            base.Draw(gameTime);
         }
     }
 }
