@@ -30,8 +30,6 @@ namespace GameName3
 
         public GameMap gameMap;
 
-        private Texture2D cat;
-
         private int tType;
 
         private SpriteFont font;
@@ -41,6 +39,9 @@ namespace GameName3
         public EasyDraw draw;
 
         private MouseState oldState;
+
+        public int showStringTimer;
+        public bool showString;
 
         public Game1()
             : base()
@@ -76,18 +77,17 @@ namespace GameName3
             // TODO: Add your initialization logic here
 
             gameMap = new GameMap(tileSprites);
-            draw = new EasyDraw();
-            draw.setFont(font, spriteBatch);
+            draw = new EasyDraw(font, spriteBatch);
 
             player = new Player(2, 2, 6, load);
 
             npcs = new List<NPC>();
-            npcs.Add(new NPC(7, 7, 0));
-            npcs.Add(new NPC(9, 9, 1));
-            npcs[0].health = 3;
-            npcs[1].health = 12;
+            npcs.Add(new NPC(7, 7, 0, 3));
+            npcs.Add(new NPC(9, 9, 1, 12));
 
             tType = 0;
+            showStringTimer = 500;
+            showString = true;
 
             base.Initialize();
         }
@@ -122,6 +122,8 @@ namespace GameName3
         protected override void Update(GameTime gameTime)
         {
             player.Update(gameMap, gameTime);
+
+            showStringTimer -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             MouseState newState = Mouse.GetState();
 
@@ -190,8 +192,19 @@ namespace GameName3
 
                     if( player.attack() )
                     {
+                        showString = true;
+                        showStringTimer = 1000;
                         n.Retaliate(player);
                     }
+
+                    if( showStringTimer <= 0 )
+                    {
+                        showString = false;
+                    }
+
+                    if (showString)
+                        draw.drawString(player.damage.ToString(), n.pos.x * 64 - player.cameraX, 
+                            (n.pos.y * 64 - player.cameraY) - 30 + (showStringTimer/10), Color.Red);
 
                     if (n.health <= 0)
                     {
@@ -207,18 +220,16 @@ namespace GameName3
                         Exit();
                     }
 
-                    spriteBatch.DrawString(font, " Target Health : " + n.health.ToString(), new Vector2(450, 40), Color.Black);
+                    draw.drawString(" Target Health : ", n.health, 450, 40);
                     
                 }
 
             }
 
-            spriteBatch.DrawString(font, " Walkable : " + gameMap.map[player.pos.x][player.pos.y].walkable.ToString(), new Vector2(10, 40), Color.Black);
-
             draw.drawString(" X : ", player.pos.x, 10, 10);
             draw.drawString(" Y : ", player.pos.y, 120, 10);
 
-            //draw.drawString(" Walkable : ", gameMap.map[player.x][player.y].walkable.toString(), 10, 40);
+            draw.drawString(" Walkable : " + gameMap.map[player.pos.x][player.pos.y].walkable.ToString(), 10, 40);
             draw.drawString(" TileTypeID : ", gameMap.map[player.pos.x][player.pos.y].getType(), 10, 70);
             draw.drawString(" walkDelay : ", (int)player.getWalkDelay(), 10, 100);
 

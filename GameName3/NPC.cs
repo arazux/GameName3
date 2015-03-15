@@ -12,11 +12,12 @@ namespace GameName3
         public int health;
         public int damage;
         public int ID;
-        public NPC(int x, int y, int id )
+        public NPC(int x, int y, int id, int health )
         {
             pos = new Position(x, y);
             damage = 2;
             this.ID = id;
+            this.health = health;
         }
 
         public void Retaliate(Player p)

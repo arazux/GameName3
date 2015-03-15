@@ -12,8 +12,9 @@ namespace GameName3
     public class GameMap
     {
         public Tile[][] map;
-        public static int tileWidth = 64;
-        public static int tileHeight = 64;
+        public static int tileSize = 64;
+        public static int xTiles = 72;
+        public static int yTiles = 14;
         public List<Texture2D> tileSprites;
         public int mapX;
         public int mapY;
@@ -132,19 +133,8 @@ namespace GameName3
             {
                 for (int col = 0; col < map[0].Length; col++)
                 { 
-                    p.cameraX = (p.pos.x * 64) - 640;
-                    p.cameraY = (p.pos.y * 64) - 320;
-                    if (p.cameraX < 0)
-                        p.cameraX = 0;
 
-                    if (p.cameraX > 5120)
-                        p.cameraX = 5120;
-
-                    if (p.cameraY < 0)
-                        p.cameraY = 0;
-
-                    if (p.cameraY > 2560)
-                        p.cameraY = 2560;
+                    p.setCamera();
 
                     sb.Draw(tileSprites[map[row][col].getType()], new Vector2((map[row][col].x * 64) - p.cameraX, (map[row][col].y * 64) - p.cameraY));
 

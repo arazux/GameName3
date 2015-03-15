@@ -60,6 +60,25 @@ namespace GameName3
             inventory = new Inventory();
         }
 
+        public void setCamera()
+        {
+            cameraX = (pos.x * GameMap.tileSize) - 448;
+            cameraY = (pos.y * GameMap.tileSize) - 256;
+
+            if (cameraX < 0)
+                cameraX = 0;
+
+            if (cameraX > (GameMap.tileSize * GameMap.xTiles) - GameMap.tileSize * 15)
+                cameraX = (GameMap.tileSize * GameMap.xTiles) - GameMap.tileSize * 15;
+
+            if (cameraY < 0)
+                cameraY = 0;
+
+            if (cameraY > (GameMap.tileSize * GameMap.yTiles) - GameMap.tileSize * 9 )
+                cameraY = (GameMap.tileSize * GameMap.yTiles) - GameMap.tileSize * 9;
+
+        }
+
         public bool attack()
         {
             if( target != null && canAttack )

@@ -12,7 +12,8 @@ namespace GameName3
     {
         SpriteFont font;
         SpriteBatch sba;
-        public void setFont(SpriteFont f, SpriteBatch s)
+
+        public EasyDraw(SpriteFont f, SpriteBatch s)
         {
             font = f;
             sba = s;
@@ -21,6 +22,16 @@ namespace GameName3
         public void drawString(string s, int var, int x, int y)
         {
             sba.DrawString(font, s + var.ToString(), new Vector2(x, y), Color.Black);
+        }
+
+        public void drawString(string s, int x, int y)
+        {
+            sba.DrawString(font, s, new Vector2(x, y), Color.Black);
+        }
+
+        public void drawString(string s, int x, int y, Color c)
+        {
+            sba.DrawString(font, s, new Vector2(x, y), c);
         }
     }
 }
